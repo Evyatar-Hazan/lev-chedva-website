@@ -7,14 +7,14 @@ const Hero: React.FC = () => {
   const { t } = useTranslation();
 
   return (
-    <section className="hero relative overflow-hidden flex items-center justify-center min-h-[90vh] pt-20" style={{ minHeight: '90vh', display: 'flex', alignItems: 'center', justifyContent: 'center', position: 'relative', overflow: 'hidden', paddingTop: '5rem' }}>
+    <section className="hero relative overflow-hidden flex items-center justify-center min-h-[95vh] pt-28" style={{ minHeight: '95vh', display: 'flex', alignItems: 'center', justifyContent: 'center', position: 'relative', overflow: 'hidden', paddingTop: '7rem' }}>
       {/* Background Decorative Elements */}
-      <div className="absolute top-[-10%] right-[-10%] w-[40vw] h-[40vw] bg-primary/10 rounded-full blur-3xl -z-10" style={{ position: 'absolute', top: '-10%', right: '-10%', width: '40vw', height: '40vw', background: 'rgba(230, 57, 70, 0.1)', borderRadius: '50%', filter: 'blur(80px)', zIndex: -10 }}></div>
-      <div className="absolute bottom-[-10%] left-[-10%] w-[30vw] h-[30vw] bg-secondary/10 rounded-full blur-3xl -z-10" style={{ position: 'absolute', bottom: '-10%', left: '-10%', width: '30vw', height: '30vw', background: 'rgba(69, 123, 157, 0.1)', borderRadius: '50%', filter: 'blur(80px)', zIndex: -10 }}></div>
+      <div className="absolute top-[-20%] right-[-10%] w-[50vw] h-[50vw] bg-primary/5 rounded-full blur-[120px] -z-10" style={{ position: 'absolute', top: '-20%', right: '-10%', width: '50vw', height: '50vw', background: 'rgba(230, 57, 70, 0.05)', borderRadius: '50%', filter: 'blur(120px)', zIndex: -10 }}></div>
+      <div className="absolute bottom-[-20%] left-[-10%] w-[40vw] h-[40vw] bg-secondary/5 rounded-full blur-[120px] -z-10" style={{ position: 'absolute', bottom: '-20%', left: '-10%', width: '40vw', height: '40vw', background: 'rgba(69, 123, 157, 0.05)', borderRadius: '50%', filter: 'blur(120px)', zIndex: -10 }}></div>
 
       <div className="container px-6 flex flex-col items-center text-center">
         <motion.div
-          initial={{ opacity: 0, y: 30 }}
+          initial={{ opacity: 0, y: 40 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.8 }}
         >

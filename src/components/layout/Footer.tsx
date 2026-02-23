@@ -1,13 +1,18 @@
 import React from 'react';
 import { Heart, Facebook, Instagram, Twitter } from 'lucide-react';
 
+import logo from '../../assets/logoLevChedva.png';
+
 const Footer: React.FC = () => {
   return (
-    <footer className="bg-text text-white py-16 px-6" style={{ background: 'var(--text)', color: 'white', padding: '4rem 1.5rem' }}>
-      <div className="container grid md:grid-cols-4 gap-12" style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(200px, 1fr))', gap: '3rem' }}>
+    <footer className="bg-text text-white py-20 px-6 border-t border-white/5" style={{ background: 'var(--text)', color: 'white', padding: '6rem 1.5rem', borderTop: '1px solid rgba(255,255,255,0.05)' }}>
+      <div className="container grid md:grid-cols-4 gap-16" style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(220px, 1fr))', gap: '4rem' }}>
         <div className="col-span-1 md:col-span-1" style={{ gridColumn: 'span 1' }}>
-          <div className="text-2xl font-bold text-primary mb-6" style={{ fontSize: '1.5rem', color: 'var(--primary)', marginBottom: '1.5rem' }}>לב חדווה</div>
-          <p className="text-white/60 mb-8" style={{ color: 'rgba(255, 255, 255, 0.6)', marginBottom: '2rem' }}>
+          <div style={{ display: 'flex', alignItems: 'center', gap: '0.75rem', marginBottom: '2rem' }}>
+            <img src={logo} alt="Logo" style={{ height: '40px', width: 'auto', filter: 'brightness(0) invert(1)' }} />
+            <div className="text-2xl font-black text-primary" style={{ fontSize: '1.5rem', color: 'var(--primary)', fontWeight: 900 }}>לב חדווה</div>
+          </div>
+          <p className="text-white/50 leading-loose mb-10" style={{ color: 'rgba(255, 255, 255, 0.5)', marginBottom: '2.5rem', fontSize: '0.95rem' }}>
             עמותה רשומה בישראל הפועלת למען שיפור רווחתם הנפשית של החולים והקשישים.
           </p>
           <div className="flex gap-4" style={{ display: 'flex', gap: '1rem' }}>

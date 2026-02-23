@@ -8,14 +8,15 @@ function cn(...inputs: ClassValue[]) {
   return twMerge(clsx(inputs));
 }
 
+import logo from '../../assets/logoLevChedva.png';
+
 const Navbar: React.FC = () => {
   const { t, i18n } = useTranslation();
   const [isScrolled, setIsScrolled] = useState(false);
-  const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
 
   useEffect(() => {
     const handleScroll = () => {
-      setIsScrolled(window.scrollY > 20);
+      setIsScrolled(window.scrollY > 50);
     };
     window.addEventListener('scroll', handleScroll);
     return () => window.removeEventListener('scroll', handleScroll);
@@ -28,6 +29,7 @@ const Navbar: React.FC = () => {
   const navLinks = [
     { name: t('nav.home'), href: '#' },
     { name: t('nav.about'), href: '#about' },
+    { name: t('nav.activities'), href: '#gallery' },
     { name: t('nav.statistics'), href: '#stats' },
     { name: t('nav.donation'), href: '#donate' },
     { name: t('nav.contact'), href: '#contact' },
@@ -35,31 +37,73 @@ const Navbar: React.FC = () => {
 
   return (
     <nav className={cn(
-      "fixed top-0 left-0 right-0 z-50 transition-all duration-300 px-6 py-4",
-      isScrolled ? "bg-white/80 backdrop-blur-md shadow-md py-2" : "bg-transparent"
-    )}>
-      <div className="container flex items-center justify-between mx-auto" style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
-        <div className="text-2xl font-bold text-primary" style={{ fontSize: '1.5rem', fontWeight: 'bold', color: 'var(--primary)' }}>
-          לב חדווה
+      "fixed top-0 left-0 right-0 z-50 transition-all duration-500",
+      isScrolled 
+        ? "bg-white/95 backdrop-blur-md shadow-xl py-3 border-b border-primary/10" 
+        : "bg-white/40 backdrop-blur-sm py-5"
+    )} style={{
+      position: 'fixed',
+      top: 0,
+      left: 0,
+      right: 0,
+      zIndex: 50,
+      transition: 'all 0.5s cubic-bezier(0.4, 0, 0.2, 1)',
+      backgroundColor: isScrolled ? 'rgba(255, 255, 255, 0.95)' : 'rgba(255, 255, 255, 0.4)',
+      backdropFilter: 'blur(10px)',
+      boxShadow: isScrolled ? '0 10px 30px -10px rgba(0,0,0,0.1)' : 'none',
+      padding: isScrolled ? '0.75rem 1.5rem' : '1.25rem 1.5rem',
+      borderBottom: isScrolled ? '1px solid rgba(230, 57, 70, 0.1)' : 'none'
+    }}>
+      <div className="container" style={{ 
+        maxWidth: '1200px', 
+        margin: '0 auto', 
+        display: 'flex', 
+        justifyContent: 'space-between', 
+        alignItems: 'center' 
+      }}>
+        <div style={{ display: 'flex', alignItems: 'center', gap: '0.75rem' }}>
+          <img src={logo} alt="Lev Chedva Logo" style={{ height: '45px', width: 'auto' }} />
+          <div className="text-2xl font-black text-primary" style={{ 
+            fontSize: '1.5rem', 
+            fontWeight: 900, 
+            color: 'var(--primary)',
+            letterSpacing: '-0.02em'
+          }}>
+          </div>
         </div>
 
         {/* Desktop Links */}
         <div className="hidden md:flex items-center gap-8" style={{ display: 'flex', gap: '2rem', alignItems: 'center' }}>
           {navLinks.map((link) => (
-            <a key={link.name} href={link.href} className="hover:text-primary transition-colors font-medium">
+            <a key={link.name} href={link.href} className="hover:text-primary transition-all duration-300 font-bold text-sm tracking-wide" style={{
+              color: 'var(--text)',
+              fontSize: '0.9rem',
+              fontWeight: 700,
+              opacity: 0.8,
+              transition: 'all 0.3s ease'
+            }}>
               {link.name}
             </a>
           ))}
-          <button onClick={toggleLanguage} className="flex items-center gap-2 px-3 py-1 rounded-full border border-primary text-primary hover:bg-primary hover:text-white transition-all">
+          <button onClick={toggleLanguage} className="flex items-center gap-2 px-4 py-2 rounded-xl bg-primary text-white hover:bg-primary-dark transition-all shadow-lg shadow-primary/20" style={{
+            display: 'flex',
+            alignItems: 'center',
+            gap: '0.5rem',
+            padding: '0.5rem 1rem',
+            borderRadius: '0.75rem',
+            backgroundColor: 'var(--primary)',
+            color: 'white',
+            fontWeight: 'bold',
+            boxShadow: '0 4px 12px rgba(230, 57, 70, 0.2)'
+          }}>
             <Globe size={18} />
-            <span className="font-bold">{i18n.language === 'he' ? 'EN' : 'עב'}</span>
+            <span className="font-bold text-xs">{i18n.language === 'he' ? 'ENGLISH' : 'עברית'}</span>
           </button>
         </div>
 
-        {/* Mobile Toggle */}
-        <button className="md:hidden" onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)} style={{ display: 'none' }}>
-           {/* Mobile menu toggle logic here if needed */}
-        </button>
+        {/* Mobile Toggle - Disabled for now as per simplified design */}
+        {/* <button className="md:hidden" onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)} style={{ display: 'none' }}>
+        </button> */}
       </div>
 
       {/* Styled manually since I'm not using full Tailwind yet, just helpers */}

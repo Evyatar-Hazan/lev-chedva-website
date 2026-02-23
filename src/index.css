@@ -21,8 +21,10 @@ body {
   font-family: 'Assistant', 'Outfit', sans-serif;
   background-color: var(--bg);
   color: var(--text);
-  line-height: 1.6;
+  line-height: 1.8;
   overflow-x: hidden;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
 }
 
 [dir="rtl"] {
@@ -57,7 +59,9 @@ body {
   margin: 0 auto;
 }
 
-h1, h2, h3 {
+h1,
+h2,
+h3 {
   font-weight: 800;
   line-height: 1.2;
 }
