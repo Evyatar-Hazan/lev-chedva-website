@@ -10,7 +10,7 @@ const Footer: React.FC = () => {
         <div className="col-span-1 md:col-span-1" style={{ gridColumn: 'span 1' }}>
           <div style={{ display: 'flex', alignItems: 'center', gap: '0.75rem', marginBottom: '2rem' }}>
             <img src={logo} alt="Logo" style={{ height: '40px', width: 'auto', filter: 'brightness(0) invert(1)' }} />
-            <div className="text-2xl font-black text-primary" style={{ fontSize: '1.5rem', color: 'var(--primary)', fontWeight: 900 }}>לב חדווה</div>
+            <div className="text-2xl font-black text-primary" style={{ fontSize: '1.5rem', color: 'var(--primary)', fontWeight: 900 }}>לב חדוה</div>
           </div>
           <p className="text-white/50 leading-loose mb-10" style={{ color: 'rgba(255, 255, 255, 0.5)', marginBottom: '2.5rem', fontSize: '0.95rem' }}>
             עמותה רשומה בישראל הפועלת למען שיפור רווחתם הנפשית של החולים והקשישים.
@@ -49,7 +49,7 @@ const Footer: React.FC = () => {
       </div>
 
       <div className="container mt-16 pt-8 border-t border-white/10 text-center text-white/40 text-sm" style={{ marginTop: '4rem', paddingTop: '2rem', borderTop: '1px solid rgba(255, 255, 255, 0.1)', textAlign: 'center', color: 'rgba(255, 255, 255, 0.4)', fontSize: '0.875rem' }}>
-        <p>© {new Date().getFullYear()} עמותת לב חדווה. כל הזכויות שמורות. נבנה באהבה <Heart size={12} className="inline text-primary" fill="currentColor" style={{ display: 'inline', color: 'var(--primary)' }} /> על ידי Antigravity</p>
+        <p>© {new Date().getFullYear()} עמותת לב חדוה. כל הזכויות שמורות. נבנה באהבה <Heart size={12} className="inline text-primary" fill="currentColor" style={{ display: 'inline', color: 'var(--primary)' }} /> על ידי Antigravity</p>
       </div>
     </footer>
   );

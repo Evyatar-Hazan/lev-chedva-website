@@ -39,8 +39,8 @@ const Navbar: React.FC = () => {
     <nav className={cn(
       "fixed top-0 left-0 right-0 z-50 transition-all duration-500",
       isScrolled 
-        ? "bg-white/95 backdrop-blur-md shadow-xl py-3 border-b border-primary/10" 
-        : "bg-white/40 backdrop-blur-sm py-5"
+        ? "bg-white shadow-2xl py-3" 
+        : "bg-white/90 backdrop-blur-md py-5 shadow-lg"
     )} style={{
       position: 'fixed',
       top: 0,
@@ -48,11 +48,11 @@ const Navbar: React.FC = () => {
       right: 0,
       zIndex: 50,
       transition: 'all 0.5s cubic-bezier(0.4, 0, 0.2, 1)',
-      backgroundColor: isScrolled ? 'rgba(255, 255, 255, 0.95)' : 'rgba(255, 255, 255, 0.4)',
-      backdropFilter: 'blur(10px)',
-      boxShadow: isScrolled ? '0 10px 30px -10px rgba(0,0,0,0.1)' : 'none',
+      backgroundColor: isScrolled ? '#ffffff' : 'rgba(255, 255, 255, 0.95)',
+      backdropFilter: 'blur(12px)',
+      boxShadow: isScrolled ? '0 15px 40px -10px rgba(0,0,0,0.15)' : '0 4px 20px -5px rgba(0,0,0,0.05)',
       padding: isScrolled ? '0.75rem 1.5rem' : '1.25rem 1.5rem',
-      borderBottom: isScrolled ? '1px solid rgba(230, 57, 70, 0.1)' : 'none'
+      borderTop: '4px solid var(--primary)',
     }}>
       <div className="container" style={{ 
         maxWidth: '1200px', 
@@ -61,49 +61,52 @@ const Navbar: React.FC = () => {
         justifyContent: 'space-between', 
         alignItems: 'center' 
       }}>
-        <div style={{ display: 'flex', alignItems: 'center', gap: '0.75rem' }}>
-          <img src={logo} alt="Lev Chedva Logo" style={{ height: '45px', width: 'auto' }} />
-          <div className="text-2xl font-black text-primary" style={{ 
-            fontSize: '1.5rem', 
+        <div style={{ display: 'flex', alignItems: 'center', gap: '1rem' }}>
+          <img src={logo} alt="Lev Chedva Logo" style={{ height: '55px', width: 'auto', filter: 'drop-shadow(0 2px 4px rgba(0,0,0,0.05))' }} />
+          <div className="text-3xl font-black text-primary" style={{ 
+            fontSize: '1.75rem', 
             fontWeight: 900, 
             color: 'var(--primary)',
-            letterSpacing: '-0.02em'
+            letterSpacing: '-0.03em',
+            lineHeight: 1
           }}>
           </div>
         </div>
 
         {/* Desktop Links */}
-        <div className="hidden md:flex items-center gap-8" style={{ display: 'flex', gap: '2rem', alignItems: 'center' }}>
+        <div className="hidden md:flex items-center gap-6" style={{ display: 'flex', gap: '1.5rem', alignItems: 'center' }}>
           {navLinks.map((link) => (
-            <a key={link.name} href={link.href} className="hover:text-primary transition-all duration-300 font-bold text-sm tracking-wide" style={{
+            <a key={link.name} href={link.href} className="navbar-link" style={{
               color: 'var(--text)',
-              fontSize: '0.9rem',
-              fontWeight: 700,
-              opacity: 0.8,
-              transition: 'all 0.3s ease'
+              fontSize: '0.95rem',
+              fontWeight: 800,
+              padding: '0.5rem 1rem',
+              borderRadius: '0.5rem',
+              transition: 'all 0.3s cubic-bezier(0.4, 0, 0.2, 1)',
+              position: 'relative'
             }}>
               {link.name}
             </a>
           ))}
-          <button onClick={toggleLanguage} className="flex items-center gap-2 px-4 py-2 rounded-xl bg-primary text-white hover:bg-primary-dark transition-all shadow-lg shadow-primary/20" style={{
+          <button onClick={toggleLanguage} className="bg-primary hover:bg-primary-dark text-white" style={{
             display: 'flex',
             alignItems: 'center',
             gap: '0.5rem',
-            padding: '0.5rem 1rem',
+            padding: '0.6rem 1.25rem',
             borderRadius: '0.75rem',
             backgroundColor: 'var(--primary)',
             color: 'white',
-            fontWeight: 'bold',
-            boxShadow: '0 4px 12px rgba(230, 57, 70, 0.2)'
+            fontWeight: 800,
+            fontSize: '0.85rem',
+            boxShadow: '0 8px 20px -6px rgba(230, 57, 70, 0.3)',
+            border: 'none',
+            cursor: 'pointer',
+            transition: 'all 0.3s ease'
           }}>
             <Globe size={18} />
-            <span className="font-bold text-xs">{i18n.language === 'he' ? 'ENGLISH' : 'עברית'}</span>
+            <span style={{ letterSpacing: '0.05em' }}>{i18n.language === 'he' ? 'ENGLISH' : 'עברית'}</span>
           </button>
         </div>
-
-        {/* Mobile Toggle - Disabled for now as per simplified design */}
-        {/* <button className="md:hidden" onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)} style={{ display: 'none' }}>
-        </button> */}
       </div>
 
       {/* Styled manually since I'm not using full Tailwind yet, just helpers */}

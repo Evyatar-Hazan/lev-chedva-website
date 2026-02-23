@@ -66,11 +66,26 @@ h3 {
   line-height: 1.2;
 }
 
-button {
-  cursor: pointer;
-  border: none;
-  outline: none;
+.navbar-link:hover {
+  background: rgba(230, 57, 70, 0.05);
+  color: var(--primary) !important;
+  opacity: 1 !important;
+}
+
+.navbar-link::after {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 50%;
+  width: 0;
+  height: 2px;
+  background: var(--primary);
   transition: all 0.3s ease;
+  transform: translateX(-50%);
+}
+
+.navbar-link:hover::after {
+  width: 70%;
 }
 
 a {
