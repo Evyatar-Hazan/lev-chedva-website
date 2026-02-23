@@ -1,172 +1,257 @@
 import React from 'react';
 import { useTranslation } from 'react-i18next';
 import { motion } from 'framer-motion';
-import { Building2, Smartphone, Heart, Package } from 'lucide-react';
+import { Building2, Smartphone, Heart, Package, ExternalLink, MessageCircle } from 'lucide-react';
+
+/* ─── donation options ─── */
+const OPTIONS = [
+  {
+    icon: Building2,
+    title: 'העברה בנקאית',
+    desc: 'העברה ישירה לחשבוננו',
+    gradient: 'linear-gradient(135deg,#3b82f6,#06b6d4)',
+    glow: 'rgba(59,130,246,0.28)',
+    accent: '#3b82f6',
+    lightBg: 'rgba(59,130,246,0.07)',
+    details: [
+      { label: 'בנק', value: 'מזרחי טפחות' },
+      { label: 'סניף', value: '479' },
+      { label: 'חשבון', value: '166555' },
+      { label: 'עבור', value: 'לב חדוה' },
+    ],
+  },
+  {
+    icon: Smartphone,
+    title: 'ביט / PayBox',
+    desc: 'תרומה מהירה וקלה',
+    gradient: 'linear-gradient(135deg,#10b981,#34d399)',
+    glow: 'rgba(16,185,129,0.28)',
+    accent: '#10b981',
+    lightBg: 'rgba(16,185,129,0.07)',
+    phone: '054-5420068',
+    action: 'שלחו הודעה',
+  },
+  {
+    icon: Heart,
+    title: 'נדרים פלוס',
+    desc: 'תרומה דרך פלטפורמת נדרים',
+    gradient: 'linear-gradient(135deg,#8b5cf6,#ec4899)',
+    glow: 'rgba(139,92,246,0.28)',
+    accent: '#8b5cf6',
+    lightBg: 'rgba(139,92,246,0.07)',
+    url: 'https://www.matara.pro/nedarimplus/online/?mosad=7005008',
+    action: 'לתרומה לחצו כאן',
+  },
+  {
+    icon: Package,
+    title: 'תרומת ציוד רפואי',
+    desc: 'צרו קשר עבור תרומת ציוד',
+    gradient: 'linear-gradient(135deg,#f97316,#fbbf24)',
+    glow: 'rgba(249,115,22,0.28)',
+    accent: '#f97316',
+    lightBg: 'rgba(249,115,22,0.07)',
+    phone: '054-5420068',
+    action: 'שלחו הודעה',
+  },
+];
+
+const containerVariants = {
+  hidden: {},
+  visible: { transition: { staggerChildren: 0.12 } },
+};
+const cardVariants = {
+  hidden: { opacity: 0, y: 50 },
+  visible: { opacity: 1, y: 0, transition: { duration: 0.55, ease: 'easeOut' } },
+};
 
 const Donation: React.FC = () => {
   const { t } = useTranslation();
 
-  const options = [
-    { 
-      icon: <Building2 className="w-8 h-8" />, 
-      title: "העברה בנקאית", 
-      desc: "העברה ישירה לחשבון שלנו",
-      color: "from-blue-500 to-cyan-400",
-      bgColor: "rgba(59, 130, 246, 0.08)",
-      borderColor: "border-blue-200",
-      details: [
-        { label: "בנק", value: "מזרחי טפחות" },
-        { label: "סניף", value: "479" },
-        { label: "חשבון", value: "166555" },
-        { label: "עבור", value: "לב חדוה" }
-      ]
-    },
-    { 
-      icon: <Smartphone className="w-8 h-8" />, 
-      title: "ביט / PayBox", 
-      desc: "תרומה מהירה וקלה",
-      color: "from-green-500 to-emerald-400",
-      bgColor: "rgba(34, 197, 94, 0.08)",
-      borderColor: "border-green-200",
-      phone: "054-5420068",
-      action: "שלחו SMS"
-    },
-    { 
-      icon: <Heart className="w-8 h-8" />, 
-      title: "נדרים פלוס", 
-      desc: "תרומה דרך פלטפורמת נדרים",
-      color: "from-purple-500 to-pink-400",
-      bgColor: "rgba(168, 85, 247, 0.08)",
-      borderColor: "border-purple-200",
-      url: "https://www.matara.pro/nedarimplus/online/?mosad=7005008",
-      action: "בקרו באתר"
-    },
-    { 
-      icon: <Package className="w-8 h-8" />, 
-      title: "תרומת ציוד רפואי", 
-      desc: "צרו קשר עבור תרומת ציוד",
-      color: "from-red-500 to-orange-400",
-      bgColor: "rgba(239, 68, 68, 0.08)",
-      borderColor: "border-red-200",
-      phone: "054-5420068",
-      action: "שלחו הודעה"
-    }
-  ];
-
   return (
-    <section id="donate" className="section-padding bg-primary/5">
-      <div className="container text-center">
+    <section
+      id="donate"
+      className="section-padding"
+      style={{
+        position: 'relative',
+        overflow: 'hidden',
+        background: 'linear-gradient(180deg,#f1faee 0%,#e8f4f8 100%)',
+      }}
+    >
+      {/* decorative blobs */}
+      <div style={{ position:'absolute', top:'-12%', right:'-6%', width:'45vw', height:'45vw', background:'radial-gradient(circle,rgba(230,57,70,0.07) 0%,transparent 70%)', borderRadius:'50%', pointerEvents:'none', zIndex:0 }} />
+      <div style={{ position:'absolute', bottom:'-12%', left:'-6%', width:'38vw', height:'38vw', background:'radial-gradient(circle,rgba(69,123,157,0.07) 0%,transparent 70%)', borderRadius:'50%', pointerEvents:'none', zIndex:0 }} />
+
+      <div className="container" style={{ position:'relative', zIndex:1 }}>
+
+        {/* ── header ── */}
         <motion.div
-          initial={{ opacity: 0, y: 30 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          className="max-w-3xl mx-auto mb-16"
+          initial={{ opacity:0, y:30 }}
+          whileInView={{ opacity:1, y:0 }}
+          viewport={{ once:false, amount:0.3 }}
+          transition={{ duration:0.7 }}
+          style={{ textAlign:'center', marginBottom:'4rem' }}
         >
-          <h2 className="text-4xl font-extrabold mb-4 text-text">{t('donation.title')}</h2>
-          <p className="text-xl text-text/70">{t('donation.subtitle')}</p>
+          <div style={{
+            display:'inline-flex', alignItems:'center', gap:'0.5rem',
+            padding:'0.4rem 1.1rem',
+            background:'rgba(230,57,70,0.1)', color:'var(--primary)',
+            borderRadius:'9999px', fontSize:'0.88rem', fontWeight:700,
+            marginBottom:'1.1rem', border:'1px solid rgba(230,57,70,0.18)',
+          }}>
+            <Heart size={14} fill="currentColor" />
+            <span>כל תרומה עושה הבדל</span>
+          </div>
+
+          <h2 style={{
+            fontSize:'clamp(1.9rem,5vw,3rem)', fontWeight:900,
+            color:'var(--text)', marginBottom:'0.75rem', lineHeight:1.15,
+          }}>
+            {t('donation.title')}
+          </h2>
+          <p style={{ fontSize:'1.05rem', color:'rgba(29,53,87,0.62)', maxWidth:'520px', margin:'0 auto' }}>
+            {t('donation.subtitle')}
+          </p>
         </motion.div>
 
-        <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6 mb-12" style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(260px, 1fr))', gap: '1.5rem' }}>
-          {options.map((opt: any, i: number) => (
-            <motion.div
-              key={i}
-              initial={{ opacity: 0, y: 20 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              whileHover={{ y: -15, boxShadow: '0 20px 40px rgba(0, 0, 0, 0.1)' }}
-              transition={{ duration: 0.3 }}
-              className="glass-card flex flex-col items-center text-center h-full"
-              style={{ 
-                display: 'flex', 
-                flexDirection: 'column', 
-                alignItems: 'center', 
-                padding: '2.5rem',
-                borderRadius: '1.5rem',
-                border: `2px solid ${opt.borderColor ? (opt.borderColor === 'border-blue-200' ? '#bfdbfe' : opt.borderColor === 'border-green-200' ? '#bbf7d0' : opt.borderColor === 'border-purple-200' ? '#e9d5ff' : '#fecaca') : 'rgba(255, 255, 255, 0.5)'}`,
-                backdropFilter: 'blur(10px)',
-                backgroundColor: 'rgba(255, 255, 255, 0.7)',
-                transition: 'all 0.3s ease',
-                cursor: 'pointer'
-              }}
-            >
-              <motion.div 
-                whileHover={{ scale: 1.15, rotate: 5 }}
-                className={`w-16 h-16 rounded-2xl bg-gradient-to-br ${opt.color} shadow-lg flex items-center justify-center mb-6`}
-                style={{ 
-                  width: '4rem', 
-                  height: '4rem', 
-                  display: 'flex', 
-                  alignItems: 'center', 
-                  justifyContent: 'center',
-                  marginBottom: '1.5rem'
+        {/* ── cards ── */}
+        <motion.div
+          variants={containerVariants}
+          initial="hidden"
+          whileInView="visible"
+          viewport={{ once:false, amount:0.1 }}
+          style={{
+            display:'grid',
+            gridTemplateColumns:'repeat(auto-fit,minmax(260px,1fr))',
+            gap:'1.5rem',
+          }}
+        >
+          {OPTIONS.map((opt, i) => {
+            const Icon = opt.icon;
+            const waLink = opt.phone
+              ? `https://wa.me/972${opt.phone.replace(/-/g,'').replace(/^0/,'')}?text=${encodeURIComponent('שלום, אני רוצה ללמוד על אפשרויות תרומה')}`
+              : undefined;
+
+            return (
+              <motion.div
+                key={i}
+                variants={cardVariants}
+                whileHover={{ y:-10, boxShadow:`0 28px 56px ${opt.glow},0 0 0 1.5px rgba(255,255,255,0.65)` }}
+                style={{
+                  position:'relative', overflow:'hidden',
+                  background:'rgba(255,255,255,0.84)',
+                  backdropFilter:'blur(18px)', WebkitBackdropFilter:'blur(18px)',
+                  borderRadius:'1.75rem',
+                  border:'1.5px solid rgba(255,255,255,0.7)',
+                  boxShadow:'0 8px 32px rgba(31,38,135,0.09)',
+                  padding:'2.2rem 1.8rem',
+                  display:'flex', flexDirection:'column', alignItems:'center', textAlign:'center',
+                  transition:'box-shadow 0.3s ease, transform 0.3s ease',
                 }}
               >
-                <div style={{ fontSize: '2rem', color: 'white' }}>
-                  {opt.icon}
-                </div>
+                {/* top gradient accent bar */}
+                <div style={{
+                  position:'absolute', top:0, left:0, right:0,
+                  height:'5px', background:opt.gradient,
+                  borderRadius:'1.75rem 1.75rem 0 0',
+                }} />
+
+                {/* icon bubble */}
+                <motion.div
+                  whileHover={{ scale:1.12, rotate:6 }}
+                  transition={{ type:'spring', stiffness:300 }}
+                  style={{
+                    width:'64px', height:'64px', borderRadius:'1.2rem',
+                    background:opt.gradient,
+                    display:'flex', alignItems:'center', justifyContent:'center',
+                    boxShadow:`0 8px 24px ${opt.glow}`,
+                    marginBottom:'1.25rem', marginTop:'0.5rem', color:'white',
+                  }}
+                >
+                  <Icon size={28} strokeWidth={2} />
+                </motion.div>
+
+                <h3 style={{ fontSize:'1.1rem', fontWeight:800, color:'var(--text)', marginBottom:'0.35rem' }}>
+                  {opt.title}
+                </h3>
+                <p style={{ fontSize:'0.87rem', color:'rgba(29,53,87,0.58)', marginBottom:'1.4rem', flexGrow:1 }}>
+                  {opt.desc}
+                </p>
+
+                {/* bank details block */}
+                {opt.details && (
+                  <div style={{
+                    width:'100%', background:opt.lightBg, borderRadius:'1rem',
+                    padding:'0.9rem 1rem', marginBottom:'1.25rem',
+                    borderRight:`4px solid ${opt.accent}`, textAlign:'right',
+                  }}>
+                    {opt.details.map((d, idx) => (
+                      <div key={idx} style={{ display:'flex', justifyContent:'space-between', fontSize:'0.84rem', lineHeight:2, color:'rgba(29,53,87,0.72)' }}>
+                        <span style={{ fontWeight:600, color:opt.accent }}>{d.label}</span>
+                        <span style={{ fontWeight:500 }}>{d.value}</span>
+                      </div>
+                    ))}
+                  </div>
+                )}
+
+                {/* phone badge */}
+                {opt.phone && (
+                  <div style={{
+                    width:'100%', padding:'0.6rem 1rem', marginBottom:'1.25rem',
+                    background:opt.lightBg, borderRadius:'0.8rem',
+                    border:`1.5px solid ${opt.accent}33`,
+                    color:opt.accent, fontWeight:700, fontSize:'1rem', direction:'ltr',
+                    display:'flex', alignItems:'center', justifyContent:'center',
+                  }}>
+                    {opt.phone}
+                  </div>
+                )}
+
+                {/* CTA */}
+                {opt.url ? (
+                  <motion.a
+                    whileHover={{ scale:1.05 }} whileTap={{ scale:0.96 }}
+                    href={opt.url} target="_blank" rel="noopener noreferrer"
+                    style={{
+                      marginTop:'auto', display:'inline-flex', alignItems:'center', gap:'0.4rem',
+                      padding:'0.7rem 1.5rem', background:opt.gradient, color:'white',
+                      borderRadius:'0.85rem', fontWeight:700, fontSize:'0.93rem',
+                      boxShadow:`0 6px 18px ${opt.glow}`, textDecoration:'none',
+                    }}
+                  >
+                    <ExternalLink size={14} />
+                    {opt.action}
+                  </motion.a>
+                ) : waLink ? (
+                  <motion.a
+                    whileHover={{ scale:1.05 }} whileTap={{ scale:0.96 }}
+                    href={waLink} target="_blank" rel="noopener noreferrer"
+                    style={{
+                      marginTop:'auto', display:'inline-flex', alignItems:'center', gap:'0.4rem',
+                      padding:'0.7rem 1.5rem', background:opt.gradient, color:'white',
+                      borderRadius:'0.85rem', fontWeight:700, fontSize:'0.93rem',
+                      boxShadow:`0 6px 18px ${opt.glow}`, textDecoration:'none',
+                    }}
+                  >
+                    <MessageCircle size={14} />
+                    {opt.action}
+                  </motion.a>
+                ) : (
+                  <motion.button
+                    whileHover={{ scale:1.05 }} whileTap={{ scale:0.96 }}
+                    style={{
+                      marginTop:'auto', display:'inline-flex', alignItems:'center', gap:'0.4rem',
+                      padding:'0.7rem 1.5rem', background:opt.gradient, color:'white',
+                      borderRadius:'0.85rem', fontWeight:700, fontSize:'0.93rem',
+                      boxShadow:`0 6px 18px ${opt.glow}`, border:'none', cursor:'pointer',
+                    }}
+                  >
+                    {opt.action ?? 'בחרו'}
+                  </motion.button>
+                )}
               </motion.div>
-              <h3 className="text-lg font-bold mb-2 text-text">{opt.title}</h3>
-              <p className="text-text/70 mb-6 text-sm flex-grow">{opt.desc}</p>
-              
-              {opt.details && (
-                <div className="text-sm text-text/75 mb-6 w-full text-right p-4 rounded-xl" style={{ fontSize: '0.875rem', lineHeight: '1.6', backgroundColor: opt.bgColor, borderLeft: `4px solid ${['#3b82f6', '#22c55e', '#a855f7', '#ef4444'][i]}` }}>
-                  {opt.details.map((detail: any, idx: number) => (
-                    <div key={idx} className="mb-2 flex justify-between items-center">
-                      <span>{detail.value}</span>
-                      <span className="font-semibold mx-2">:</span>
-                      <span className="font-semibold" style={{ color: ['#3b82f6', '#22c55e', '#a855f7', '#ef4444'][i] }}>
-                        {detail.label}
-                      </span>
-                    </div>
-                  ))}
-                </div>
-              )}
-              
-              {opt.phone && (
-                <div className="text-sm font-mono p-4 rounded-xl w-full mb-6 border" style={{ 
-                  fontSize: '0.95rem', 
-                  direction: 'ltr',
-                  backgroundColor: opt.bgColor,
-                  borderColor: ['#3b82f6', '#22c55e', '#a855f7', '#ef4444'][i],
-                  color: ['#3b82f6', '#22c55e', '#a855f7', '#ef4444'][i]
-                }}>
-                  {opt.phone}
-                </div>
-              )}
-              
-              {opt.url ? (
-                <motion.a
-                  whileHover={{ scale: 1.05 }}
-                  whileTap={{ scale: 0.95 }}
-                  href={opt.url}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className={`mt-auto px-6 py-3 bg-gradient-to-r ${opt.color} text-white rounded-xl font-bold shadow-md hover:shadow-lg transition-all`}
-                >
-                  {opt.action}
-                </motion.a>
-              ) : opt.phone ? (
-                <motion.a
-                  whileHover={{ scale: 1.05 }}
-                  whileTap={{ scale: 0.95 }}
-                  href={`https://wa.me/972${opt.phone.replace('-', '')}?text=${encodeURIComponent('שלום, אני רוצה ללמוד על אפשרויות תרומה')}`}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className={`mt-auto px-6 py-3 bg-gradient-to-r ${opt.color} text-white rounded-xl font-bold shadow-md hover:shadow-lg transition-all`}
-                >
-                  {opt.action}
-                </motion.a>
-              ) : (
-                <motion.button 
-                  whileHover={{ scale: 1.05 }}
-                  whileTap={{ scale: 0.95 }}
-                  className={`mt-auto px-6 py-3 bg-gradient-to-r ${opt.color} text-white rounded-xl font-bold shadow-md hover:shadow-lg transition-all`}
-                >
-                  {opt.action || 'בחרו'}
-                </motion.button>
-              )}
-            </motion.div>
-          ))}
-        </div>
+            );
+          })}
+        </motion.div>
       </div>
     </section>
   );
