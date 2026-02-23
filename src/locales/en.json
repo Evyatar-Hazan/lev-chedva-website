@@ -1,0 +1,41 @@
+{
+  "nav": {
+    "home": "Home",
+    "about": "About",
+    "activities": "Activities",
+    "statistics": "Impact",
+    "donation": "Donate",
+    "stories": "Stories",
+    "contact": "Contact"
+  },
+  "hero": {
+    "title1": "Lev Chedva -",
+    "title2": "Connecting Hearts, Spreading Joy",
+    "subtitle": "An association bringing light, joy, and happiness to the sick and elderly in medical centers and through home visits.",
+    "cta": "How Can I Help?"
+  },
+  "about": {
+    "title": "Who Are We?",
+    "description": "Lev Chedva was established with the aim of spreading light and joy among those who need it most. We believe that a single smile can change the world.",
+    "mission": "Our mission is to be there for every person who feels lonely or in pain, and to bring them the spirit of heart and joy."
+  },
+  "stats": {
+    "volunteers": "Active Volunteers",
+    "visits": "Annual Visits",
+    "centers": "Medical Centers",
+    "smiles": "Smiles We've Shared"
+  },
+  "donation": {
+    "title": "Join Our Mission",
+    "subtitle": "Your every contribution helps us reach more hearts and create more moments of happiness.",
+    "cta": "Donate Now"
+  },
+  "contact": {
+    "title": "Contact Us",
+    "name": "Full Name",
+    "email": "Email",
+    "phone": "Phone",
+    "message": "Message",
+    "send": "Send Message"
+  }
+}
