@@ -23,10 +23,6 @@ const About: React.FC = () => {
               style={{ width: '100%', height: '100%', objectFit: 'cover', filter: 'grayscale(100%)', transition: 'filter 0.7s ease' }}
             />
           </div>
-          <div className="absolute -bottom-6 -right-6 p-8 glass-card max-w-[200px]" style={{ position: 'absolute', bottom: '-1.5rem', right: '-1.5rem', padding: '2rem', maxWidth: '200px' }}>
-            <div className="text-4xl font-bold text-primary">10+</div>
-            <div className="text-sm font-semibold">שנות עשייה ברוכה</div>
-          </div>
         </motion.div>
 
         <motion.div

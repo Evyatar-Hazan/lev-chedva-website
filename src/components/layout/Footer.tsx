@@ -35,7 +35,7 @@ const Footer: React.FC = () => {
         <div>
           <h4 className="text-lg font-bold mb-6">צור קשר</h4>
           <ul className="space-y-4 text-white/60" style={{ listStyle: 'none', display: 'flex', flexDirection: 'column', gap: '1rem' }}>
-            <li>טלפון: 050-1234567</li>
+            <li>טלפון: 054-5420068</li>
             <li>אימייל: office@lev-chedva.org</li>
             <li>כתובת: ירושלים, ישראל</li>
           </ul>
@@ -49,7 +49,7 @@ const Footer: React.FC = () => {
       </div>
 
       <div className="container mt-16 pt-8 border-t border-white/10 text-center text-white/40 text-sm" style={{ marginTop: '4rem', paddingTop: '2rem', borderTop: '1px solid rgba(255, 255, 255, 0.1)', textAlign: 'center', color: 'rgba(255, 255, 255, 0.4)', fontSize: '0.875rem' }}>
-        <p>© {new Date().getFullYear()} עמותת לב חדוה. כל הזכויות שמורות. נבנה באהבה <Heart size={12} className="inline text-primary" fill="currentColor" style={{ display: 'inline', color: 'var(--primary)' }} /> על ידי Antigravity</p>
+        <p>© {new Date().getFullYear()} עמותת לב חדוה. כל הזכויות שמורות. נבנה באהבה <Heart size={12} className="inline text-primary" fill="currentColor" style={{ display: 'inline', color: 'var(--primary)' }} /> על ידי <a href="https://evyatarhazan.com" target="_blank" rel="noopener noreferrer" style={{ color: 'var(--primary)', textDecoration: 'none' }} className="hover:underline">Evyatar Hazan</a> </p>
       </div>
     </footer>
   );

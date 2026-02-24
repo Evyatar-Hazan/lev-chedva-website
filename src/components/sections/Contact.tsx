@@ -18,7 +18,7 @@ const Contact: React.FC = () => {
                 </div>
                 <div>
                   <div className="text-sm text-text/50 font-bold uppercase tracking-wider">טלפון</div>
-                  <div className="text-xl font-bold">050-1234567</div>
+                  <div className="text-xl font-bold">054-5420068</div>
                 </div>
               </div>
               <div className="flex items-center gap-4" style={{ display: 'flex', alignItems: 'center', gap: '1rem' }}>
