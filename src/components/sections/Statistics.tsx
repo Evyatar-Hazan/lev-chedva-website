@@ -49,9 +49,10 @@ const Statistics: React.FC = () => {
               key={index}
               variants={itemVariants}
               className="flex flex-col items-center text-center p-6 glass-card border-white/10"
+              aria-label={`${stat.label}: ${stat.value}`}
               style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', textAlign: 'center', padding: '1.5rem', background: 'rgba(255, 255, 255, 0.05)', borderRadius: '1.5rem', border: '1px solid rgba(255, 255, 255, 0.1)' }}
             >
-              <div className="mb-4 text-primary" style={{ marginBottom: '1rem', color: 'var(--primary)' }}>
+              <div aria-hidden="true" className="mb-4 text-primary" style={{ marginBottom: '1rem', color: 'var(--primary)' }}>
                 {stat.icon}
               </div>
               <div className="text-3xl font-extrabold mb-2" style={{ fontSize: '1.875rem', fontWeight: 800, marginBottom: '0.5rem' }}>

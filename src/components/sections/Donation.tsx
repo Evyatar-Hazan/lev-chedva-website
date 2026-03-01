@@ -99,7 +99,7 @@ const Donation: React.FC = () => {
             borderRadius:'9999px', fontSize:'0.88rem', fontWeight:700,
             marginBottom:'1.1rem', border:'1px solid rgba(230,57,70,0.18)',
           }}>
-            <Heart size={14} fill="currentColor" />
+            <Heart size={14} fill="currentColor" aria-hidden="true" />
             <span>{t('donation.badge')}</span>
           </div>
 
@@ -146,6 +146,7 @@ const Donation: React.FC = () => {
                 key={i}
                 variants={cardVariants}
                 whileHover={{ y:-10, boxShadow:`0 28px 56px ${opt.glow},0 0 0 1.5px rgba(255,255,255,0.65)` }}
+                aria-labelledby={`donation-title-${i}`}
                 style={{
                   position:'relative', overflow:'hidden',
                   background:'rgba(255,255,255,0.84)',
@@ -177,10 +178,10 @@ const Donation: React.FC = () => {
                     marginBottom:'1.25rem', marginTop:'0.5rem', color:'white',
                   }}
                 >
-                  <Icon size={28} strokeWidth={2} />
+                  <Icon size={28} strokeWidth={2} aria-hidden="true" />
                 </motion.div>
 
-                <h3 style={{ fontSize:'1.1rem', fontWeight:800, color:'var(--text)', marginBottom:'0.35rem' }}>
+                <h3 id={`donation-title-${i}`} style={{ fontSize:'1.1rem', fontWeight:800, color:'var(--text)', marginBottom:'0.35rem' }}>
                   {opt.title}
                 </h3>
                 <p style={{ fontSize:'0.87rem', color:'rgba(29,53,87,0.58)', marginBottom:'1.4rem', flexGrow:1 }}>
@@ -221,6 +222,7 @@ const Donation: React.FC = () => {
                   <motion.a
                     whileHover={{ scale:1.05 }} whileTap={{ scale:0.96 }}
                     href={opt.url} target="_blank" rel="noopener noreferrer"
+                    aria-label={`${opt.action} - ${opt.title} (Opens in new tab)`}
                     style={{
                       marginTop:'auto', display:'inline-flex', alignItems:'center', gap:'0.4rem',
                       padding:'0.7rem 1.5rem', background:opt.gradient, color:'white',
@@ -228,13 +230,14 @@ const Donation: React.FC = () => {
                       boxShadow:`0 6px 18px ${opt.glow}`, textDecoration:'none',
                     }}
                   >
-                    <ExternalLink size={14} />
+                    <ExternalLink size={14} aria-hidden="true" />
                     {opt.action}
                   </motion.a>
                 ) : waLink ? (
                   <motion.a
                     whileHover={{ scale:1.05 }} whileTap={{ scale:0.96 }}
                     href={waLink} target="_blank" rel="noopener noreferrer"
+                    aria-label={`${opt.action} - ${opt.title} via WhatsApp (Opens in new tab)`}
                     style={{
                       marginTop:'auto', display:'inline-flex', alignItems:'center', gap:'0.4rem',
                       padding:'0.7rem 1.5rem', background:opt.gradient, color:'white',
@@ -242,7 +245,7 @@ const Donation: React.FC = () => {
                       boxShadow:`0 6px 18px ${opt.glow}`, textDecoration:'none',
                     }}
                   >
-                    <MessageCircle size={14} />
+                    <MessageCircle size={14} aria-hidden="true" />
                     {opt.action}
                   </motion.a>
                 ) : (

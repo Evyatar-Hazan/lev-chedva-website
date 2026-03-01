@@ -18,7 +18,7 @@ const About: React.FC = () => {
           <div className="aspect-square bg-primary/10 rounded-3xl overflow-hidden shadow-2xl" style={{ aspectRatio: '1/1', background: 'rgba(230, 57, 70, 0.1)', borderRadius: '1.5rem', overflow: 'hidden', boxShadow: '0 25px 50px -12px rgba(0, 0, 0, 0.25)' }}>
             <img 
               src="https://images.unsplash.com/photo-1593113630400-ea4288922497?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80" 
-              alt="Volunteers" 
+              alt={t('about.image_alt') || 'מתנדבי עמותת לב חדווה בפעילות'} 
               className="w-full h-full object-cover grayscale hover:grayscale-0 transition-all duration-700" 
               style={{ width: '100%', height: '100%', objectFit: 'cover', filter: 'grayscale(100%)', transition: 'filter 0.7s ease' }}
             />

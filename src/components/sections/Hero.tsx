@@ -9,8 +9,8 @@ const Hero: React.FC = () => {
   return (
     <section className="hero relative overflow-hidden flex items-center justify-center min-h-[95vh] pt-28" style={{ minHeight: '95vh', display: 'flex', alignItems: 'center', justifyContent: 'center', position: 'relative', overflow: 'hidden', paddingTop: '7rem' }}>
       {/* Background Decorative Elements */}
-      <div className="absolute top-[-20%] right-[-10%] w-[50vw] h-[50vw] bg-primary/5 rounded-full blur-[120px] -z-10" style={{ position: 'absolute', top: '-20%', right: '-10%', width: '50vw', height: '50vw', background: 'rgba(230, 57, 70, 0.05)', borderRadius: '50%', filter: 'blur(120px)', zIndex: -10 }}></div>
-      <div className="absolute bottom-[-20%] left-[-10%] w-[40vw] h-[40vw] bg-secondary/5 rounded-full blur-[120px] -z-10" style={{ position: 'absolute', bottom: '-20%', left: '-10%', width: '40vw', height: '40vw', background: 'rgba(69, 123, 157, 0.05)', borderRadius: '50%', filter: 'blur(120px)', zIndex: -10 }}></div>
+      <div aria-hidden="true" className="absolute top-[-20%] right-[-10%] w-[50vw] h-[50vw] bg-primary/5 rounded-full blur-[120px] -z-10" style={{ position: 'absolute', top: '-20%', right: '-10%', width: '50vw', height: '50vw', background: 'rgba(230, 57, 70, 0.05)', borderRadius: '50%', filter: 'blur(120px)', zIndex: -10 }}></div>
+      <div aria-hidden="true" className="absolute bottom-[-20%] left-[-10%] w-[40vw] h-[40vw] bg-secondary/5 rounded-full blur-[120px] -z-10" style={{ position: 'absolute', bottom: '-20%', left: '-10%', width: '40vw', height: '40vw', background: 'rgba(69, 123, 157, 0.05)', borderRadius: '50%', filter: 'blur(120px)', zIndex: -10 }}></div>
 
       <div className="container flex flex-col items-center text-center">
         <motion.div
@@ -20,7 +20,7 @@ const Hero: React.FC = () => {
           transition={{ duration: 0.8 }}
         >
           <div className="inline-flex items-center gap-2 px-4 py-2 bg-primary/10 text-primary rounded-full mb-6 font-semibold" style={{ display: 'inline-flex', alignItems: 'center', gap: '0.5rem', padding: '0.5rem 1rem', background: 'rgba(230, 57, 70, 0.1)', color: 'var(--primary)', borderRadius: '9999px', marginBottom: '1.5rem', fontWeight: 600 }}>
-            <Heart size={18} fill="currentColor" />
+            <Heart size={18} fill="currentColor" aria-hidden="true" />
             <span>{t('hero.badge')}</span>
           </div>
 

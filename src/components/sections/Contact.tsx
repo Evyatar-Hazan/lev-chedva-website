@@ -48,8 +48,8 @@ const Contact: React.FC = () => {
   return (
     <section id="contact" className="section-padding" style={{ position: 'relative', overflow: 'hidden', width: '100%' }}>
       {/* Background Decorative Elements */}
-      <div style={{ position: 'absolute', top: '10%', left: '-5%', width: '30vw', height: '30vw', background: 'rgba(230, 57, 70, 0.05)', borderRadius: '50%', filter: 'blur(100px)', zIndex: -1 }}></div>
-      <div style={{ position: 'absolute', bottom: '-10%', right: '-5%', width: '25vw', height: '25vw', background: 'rgba(69, 123, 157, 0.05)', borderRadius: '50%', filter: 'blur(100px)', zIndex: -1 }}></div>
+      <div aria-hidden="true" style={{ position: 'absolute', top: '10%', left: '-5%', width: '30vw', height: '30vw', background: 'rgba(230, 57, 70, 0.05)', borderRadius: '50%', filter: 'blur(100px)', zIndex: -1 }}></div>
+      <div aria-hidden="true" style={{ position: 'absolute', bottom: '-10%', right: '-5%', width: '25vw', height: '25vw', background: 'rgba(69, 123, 157, 0.05)', borderRadius: '50%', filter: 'blur(100px)', zIndex: -1 }}></div>
 
       <div className="container" style={{ position: 'relative', zIndex: 10 }}>
         <motion.div
@@ -80,7 +80,7 @@ const Contact: React.FC = () => {
             fontWeight: 'bold',
             fontSize: '0.875rem'
           }}>
-            <MessageCircle size={16} />
+            <MessageCircle size={16} aria-hidden="true" />
             <span style={{ textTransform: 'uppercase', letterSpacing: '0.1em' }}>{t('contact.badge')}</span>
           </div>
           
@@ -126,56 +126,94 @@ const Contact: React.FC = () => {
                   whileHover={item.link ? { y: -8, scale: 1.02 } : {}}
                   style={{ display: 'flex', flexDirection: 'column', alignItems: 'center' }}
                 >
-                  <a 
-                    href={item.link || '#'} 
-                    onClick={(e) => !item.link && e.preventDefault()}
-                    target={item.link?.startsWith('http') ? '_blank' : undefined} 
-                    rel={item.link?.startsWith('http') ? 'noopener noreferrer' : undefined}
-                    style={{ 
-                      display: 'flex', 
-                      flexDirection: 'column', 
-                      alignItems: 'center',
-                      textDecoration: 'none',
-                      color: 'inherit',
-                      width: '100%',
-                      cursor: item.link ? 'pointer' : 'default'
-                    }}
-                  >
-                    <div style={{ 
-                      width: '80px',
-                      height: '80px',
-                      borderRadius: '1.5rem', 
-                      background: 'white', 
-                      boxShadow: '0 10px 25px rgba(0, 0, 0, 0.05)', 
-                      display: 'flex',
-                      alignItems: 'center',
-                      justifyContent: 'center',
-                      marginBottom: '1.25rem',
-                      color: item.color,
-                      border: '1px solid rgba(0,0,0,0.03)',
-                      transition: 'all 0.3s ease'
-                    }}>
-                      <Icon size={38} strokeWidth={2} />
+                  {item.link ? (
+                    <a 
+                      href={item.link} 
+                      aria-label={`${item.label}: ${item.value}`}
+                      target={item.link.startsWith('http') ? '_blank' : undefined} 
+                      rel={item.link.startsWith('http') ? 'noopener noreferrer' : undefined}
+                      style={{ 
+                        display: 'flex', 
+                        flexDirection: 'column', 
+                        alignItems: 'center',
+                        textDecoration: 'none',
+                        color: 'inherit',
+                        width: '100%',
+                        cursor: 'pointer'
+                      }}
+                    >
+                      <div style={{ 
+                        width: '80px',
+                        height: '80px',
+                        borderRadius: '1.5rem', 
+                        background: 'white', 
+                        boxShadow: '0 10px 25px rgba(0, 0, 0, 0.05)', 
+                        display: 'flex',
+                        alignItems: 'center',
+                        justifyContent: 'center',
+                        marginBottom: '1.25rem',
+                        color: item.color,
+                        border: '1px solid rgba(0,0,0,0.03)',
+                        transition: 'all 0.3s ease'
+                      }}>
+                        <Icon size={38} strokeWidth={2} aria-hidden="true" />
+                      </div>
+                      <div style={{ 
+                        fontSize: '0.875rem', 
+                        color: 'rgba(29, 53, 87, 0.4)', 
+                        fontWeight: '800', 
+                        textTransform: 'uppercase', 
+                        letterSpacing: '0.15em', 
+                        marginBottom: '0.5rem' 
+                      }}>
+                        {item.label}
+                      </div>
+                      <div style={{ 
+                        fontSize: '1.125rem', 
+                        fontWeight: '800', 
+                        color: 'var(--text)', 
+                        direction: 'ltr' 
+                      }}>
+                        {item.value}
+                      </div>
+                    </a>
+                  ) : (
+                    <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', width: '100%' }}>
+                      <div style={{ 
+                        width: '80px',
+                        height: '80px',
+                        borderRadius: '1.5rem', 
+                        background: 'white', 
+                        boxShadow: '0 10px 25px rgba(0, 0, 0, 0.05)', 
+                        display: 'flex',
+                        alignItems: 'center',
+                        justifyContent: 'center',
+                        marginBottom: '1.25rem',
+                        color: item.color,
+                        border: '1px solid rgba(0,0,0,0.03)'
+                      }}>
+                        <Icon size={38} strokeWidth={2} aria-hidden="true" />
+                      </div>
+                      <div style={{ 
+                        fontSize: '0.875rem', 
+                        color: 'rgba(29, 53, 87, 0.4)', 
+                        fontWeight: '800', 
+                        textTransform: 'uppercase', 
+                        letterSpacing: '0.15em', 
+                        marginBottom: '0.5rem' 
+                      }}>
+                        {item.label}
+                      </div>
+                      <div style={{ 
+                        fontSize: '1.125rem', 
+                        fontWeight: '800', 
+                        color: 'var(--text)', 
+                        textAlign: 'center'
+                      }}>
+                        {item.value}
+                      </div>
                     </div>
-                    <div style={{ 
-                      fontSize: '0.875rem', 
-                      color: 'rgba(29, 53, 87, 0.4)', 
-                      fontWeight: '800', 
-                      textTransform: 'uppercase', 
-                      letterSpacing: '0.15em', 
-                      marginBottom: '0.5rem' 
-                    }}>
-                      {item.label}
-                    </div>
-                    <div style={{ 
-                      fontSize: '1.125rem', 
-                      fontWeight: '800', 
-                      color: 'var(--text)', 
-                      direction: 'ltr' 
-                    }}>
-                      {item.value}
-                    </div>
-                  </a>
+                  )}
                 </motion.div>
               );
             })}

@@ -38,7 +38,9 @@ const Navbar: React.FC = () => {
   ];
 
   return (
-    <nav className={cn(
+    <nav 
+      aria-label={t('nav.aria_label') || 'Main Navigation'}
+      className={cn(
       "fixed top-0 left-0 right-0 z-50 transition-all duration-500",
       isScrolled 
         ? "bg-white shadow-2xl py-3" 
@@ -64,7 +66,7 @@ const Navbar: React.FC = () => {
         alignItems: 'center' 
       }}>
         <div style={{ display: 'flex', alignItems: 'center', gap: '1rem' }}>
-          <img src={logo} alt="Lev Chedva Logo" style={{ height: '55px', width: 'auto', filter: 'drop-shadow(0 2px 4px rgba(0,0,0,0.05))' }} />
+          <img src={logo} alt={t('nav.logo_alt') || 'לב חדווה - דף הבית'} style={{ height: '55px', width: 'auto', filter: 'drop-shadow(0 2px 4px rgba(0,0,0,0.05))' }} />
         </div>
 
         {/* Desktop Links */}
@@ -82,22 +84,27 @@ const Navbar: React.FC = () => {
               {link.name}
             </a>
           ))}
-          <button onClick={toggleLanguage} className="bg-primary hover:bg-primary-dark text-white" style={{
-            display: 'flex',
-            alignItems: 'center',
-            gap: '0.5rem',
-            padding: '0.6rem 1.25rem',
-            borderRadius: '0.75rem',
-            backgroundColor: 'var(--primary)',
-            color: 'white',
-            fontWeight: 800,
-            fontSize: '0.85rem',
-            boxShadow: '0 8px 20px -6px rgba(230, 57, 70, 0.3)',
-            border: 'none',
-            cursor: 'pointer',
-            transition: 'all 0.3s ease'
-          }}>
-            <Globe size={18} />
+          <button 
+            onClick={toggleLanguage} 
+            aria-label={i18n.language === 'he' ? 'Switch to English' : 'החלף לעברית'}
+            className="bg-primary hover:bg-primary-dark text-white" 
+            style={{
+              display: 'flex',
+              alignItems: 'center',
+              gap: '0.5rem',
+              padding: '0.6rem 1.25rem',
+              borderRadius: '0.75rem',
+              backgroundColor: 'var(--primary)',
+              color: 'white',
+              fontWeight: 800,
+              fontSize: '0.85rem',
+              boxShadow: '0 8px 20px -6px rgba(230, 57, 70, 0.3)',
+              border: 'none',
+              cursor: 'pointer',
+              transition: 'all 0.3s ease'
+            }}
+          >
+            <Globe size={18} aria-hidden="true" />
             <span style={{ letterSpacing: '0.05em' }}>{i18n.language === 'he' ? 'English' : 'עברית'}</span>
           </button>
         </div>
@@ -106,9 +113,12 @@ const Navbar: React.FC = () => {
         <button 
           className="md:hidden flex items-center justify-center p-2 text-text"
           onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
+          aria-label={isMobileMenuOpen ? t('nav.close_menu') || 'Close menu' : t('nav.open_menu') || 'Open menu'}
+          aria-expanded={isMobileMenuOpen}
+          aria-controls="mobile-menu"
           style={{ border: 'none', background: 'none', cursor: 'pointer' }}
         >
-          {isMobileMenuOpen ? <X size={28} /> : <Menu size={28} />}
+          {isMobileMenuOpen ? <X size={28} aria-hidden="true" /> : <Menu size={28} aria-hidden="true" />}
         </button>
       </div>
 
@@ -116,6 +126,7 @@ const Navbar: React.FC = () => {
       <AnimatePresence>
         {isMobileMenuOpen && (
           <motion.div
+            id="mobile-menu"
             initial={{ opacity: 0, height: 0 }}
             animate={{ opacity: 1, height: 'auto' }}
             exit={{ opacity: 0, height: 0 }}

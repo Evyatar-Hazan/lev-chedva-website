@@ -20,8 +20,11 @@ const App: React.FC = () => {
 
   return (
     <div className="app">
+      <a href="#main-content" className="skip-link">
+        {i18n.language === 'he' ? 'דלג לתוכן המרכזי' : 'Skip to main content'}
+      </a>
       <Navbar />
-      <main>
+      <main id="main-content">
         <Hero />
         <About />
         <Statistics />

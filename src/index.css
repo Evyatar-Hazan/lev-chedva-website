@@ -99,3 +99,34 @@ a {
   text-decoration: none;
   color: inherit;
 }
+
+/* Accessibility */
+.skip-link {
+  position: absolute;
+  top: -100px;
+  left: 50%;
+  transform: translateX(-50%);
+  background: var(--primary);
+  color: white;
+  padding: 1rem 2rem;
+  z-index: 9999;
+  font-weight: 800;
+  border-radius: 0 0 1rem 1rem;
+  transition: top 0.3s ease;
+}
+
+.skip-link:focus {
+  top: 0;
+}
+
+:focus-visible {
+  outline: 3px solid var(--primary);
+  outline-offset: 4px;
+}
+
+/* RTL Specifics */
+[dir="rtl"] .skip-link {
+  left: auto;
+  right: 50%;
+  transform: translateX(50%);
+}

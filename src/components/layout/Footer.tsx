@@ -19,9 +19,9 @@ const Footer: React.FC = () => {
             {t('footer.description')}
           </p>
           <div className="flex gap-4" style={{ display: 'flex', gap: '1rem' }}>
-            <a href="#" className="w-10 h-10 rounded-full bg-white/5 flex items-center justify-center hover:bg-primary transition-all"><Facebook size={20} /></a>
-            <a href="#" className="w-10 h-10 rounded-full bg-white/5 flex items-center justify-center hover:bg-primary transition-all"><Instagram size={20} /></a>
-            <a href="#" className="w-10 h-10 rounded-full bg-white/5 flex items-center justify-center hover:bg-primary transition-all"><Twitter size={20} /></a>
+            <a href="#" aria-label={t('footer.facebook_aria') || 'Facebook'} className="w-10 h-10 rounded-full bg-white/5 flex items-center justify-center hover:bg-primary transition-all"><Facebook size={20} aria-hidden="true" /></a>
+            <a href="#" aria-label={t('footer.instagram_aria') || 'Instagram'} className="w-10 h-10 rounded-full bg-white/5 flex items-center justify-center hover:bg-primary transition-all"><Instagram size={20} aria-hidden="true" /></a>
+            <a href="#" aria-label={t('footer.twitter_aria') || 'Twitter'} className="w-10 h-10 rounded-full bg-white/5 flex items-center justify-center hover:bg-primary transition-all"><Twitter size={20} aria-hidden="true" /></a>
           </div>
         </div>
 
@@ -52,7 +52,7 @@ const Footer: React.FC = () => {
             <div className="p-2 bg-white rounded-lg shadow-sm" style={{ padding: '0.5rem', backgroundColor: 'white', borderRadius: '0.5rem' }}>
               <img 
                 src="/images/qrcode_www.matara.pro.png" 
-                alt="Donation QR Code" 
+                alt={t('footer.qr_alt') || 'קוד QR לתרומה מהירה'} 
                 style={{ width: '120px', height: '120px', display: 'block' }}
               />
             </div>
@@ -79,9 +79,9 @@ const Footer: React.FC = () => {
         <p className="flex flex-wrap justify-center items-center gap-1">
           <span>© {new Date().getFullYear()} {t('footer.rights')}</span>
           <span className="flex items-center gap-1">
-            {t('footer.built_with')} <Heart size={12} className="text-primary" fill="currentColor" style={{ color: 'var(--primary)' }} /> {t('footer.by')}
+            {t('footer.built_with')} <Heart size={12} aria-hidden="true" className="text-primary" fill="currentColor" style={{ color: 'var(--primary)' }} /> {t('footer.by')}
           </span>
-          <a href="https://evyatarhazan.com" target="_blank" rel="noopener noreferrer" style={{ color: 'var(--primary)', textDecoration: 'none' }} className="hover:underline">Evyatar Hazan</a>
+          <a href="https://evyatarhazan.com" target="_blank" rel="noopener noreferrer" style={{ color: 'var(--primary)', textDecoration: 'none' }} className="hover:underline" aria-label="Evyatar Hazan - Website Developer (Opens in new tab)">Evyatar Hazan</a>
         </p>
       </div>
     </footer>

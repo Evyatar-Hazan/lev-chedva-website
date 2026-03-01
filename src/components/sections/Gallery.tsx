@@ -20,7 +20,7 @@ const Gallery: React.FC = () => {
         <div className="flex justify-between items-end mb-12" style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'flex-end', marginBottom: '3rem' }}>
           <div>
             <h2 className="text-4xl font-extrabold text-text mb-2">{t('gallery.title')}</h2>
-            <div className="w-20 h-1 bg-primary rounded-full"></div>
+            <div className="w-20 h-1 bg-primary rounded-full" aria-hidden="true"></div>
           </div>
         </div>
 
@@ -36,7 +36,12 @@ const Gallery: React.FC = () => {
               className="aspect-square rounded-2xl overflow-hidden shadow-lg"
               style={{ aspectRatio: '1/1', borderRadius: '1rem', overflow: 'hidden', boxShadow: '0 10px 15px -3px rgba(0, 0, 0, 0.1)' }}
             >
-              <img src={img} alt={`Gallery ${i}`} className="w-full h-full object-cover" style={{ width: '100%', height: '100%', objectFit: 'cover' }} />
+              <img 
+                src={img} 
+                alt={`${t('gallery.image_alt') || 'תמונה מפעילות העמותה'} ${i + 1}`} 
+                className="w-full h-full object-cover" 
+                style={{ width: '100%', height: '100%', objectFit: 'cover' }} 
+              />
             </motion.div>
           ))}
         </div>

@@ -6,7 +6,11 @@
     "statistics": "Impact",
     "donation": "Donate",
     "stories": "Stories",
-    "contact": "Contact"
+    "contact": "Contact",
+    "aria_label": "Main Navigation",
+    "logo_alt": "Lev Chedva - Home",
+    "open_menu": "Open Menu",
+    "close_menu": "Close Menu"
   },
   "hero": {
     "badge": "Our heart is with you",
@@ -19,7 +23,8 @@
   "about": {
     "title": "Who Are We?",
     "description": "Lev Chedva was established with the aim of spreading light and joy among those who need it most. We believe that a single smile can change the world.",
-    "mission": "Our mission is to be there for every person who feels lonely or in pain, and to bring them the spirit of heart and joy."
+    "mission": "Our mission is to be there for every person who feels lonely or in pain, and to bring them the spirit of heart and joy.",
+    "image_alt": "Lev Chedva volunteers in action"
   },
   "stats": {
     "volunteers": "Active Volunteers",
@@ -72,7 +77,8 @@
     "whatsapp_cta": "Talk to us on WhatsApp"
   },
   "gallery": {
-    "title": "Field Activities"
+    "title": "Field Activities",
+    "image_alt": "Activity image"
   },
   "footer": {
     "description": "A registered association in Israel working to improve the mental well-being of the sick and elderly.",
@@ -85,6 +91,10 @@
     "rights": "Lev Chedva Association. All rights reserved.",
     "built_by": "Built with love by",
     "built_with": "Built with",
-    "by": "by"
+    "by": "by",
+    "facebook_aria": "Facebook",
+    "instagram_aria": "Instagram",
+    "twitter_aria": "Twitter",
+    "qr_alt": "Quick donation QR code"
   }
 }
