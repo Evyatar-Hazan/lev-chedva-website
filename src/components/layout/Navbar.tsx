@@ -31,8 +31,8 @@ const Navbar: React.FC = () => {
   const navLinks = [
     { name: t('nav.home'), href: '#' },
     { name: t('nav.about'), href: '#about' },
-    { name: t('nav.activities'), href: '#gallery' },
     { name: t('nav.statistics'), href: '#stats' },
+    { name: t('nav.activities'), href: '#gallery' },
     { name: t('nav.donation'), href: '#donate' },
     { name: t('nav.contact'), href: '#contact' },
   ];

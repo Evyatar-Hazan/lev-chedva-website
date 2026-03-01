@@ -34,22 +34,24 @@ const Hero: React.FC = () => {
           </p>
 
           <div className="flex flex-col sm:flex-row justify-center gap-4" style={{ display: 'flex', flexDirection: 'column', flexWrap: 'wrap', justifyContent: 'center', gap: '1rem' }}>
-            <motion.button
+            <motion.a
               whileHover={{ scale: 1.05 }}
               whileTap={{ scale: 0.95 }}
-              className="px-8 py-4 bg-primary text-white rounded-2xl font-bold shadow-lg shadow-primary/30 text-lg hover:bg-primary-dark transition-all w-full sm:w-auto"
-              style={{ padding: '1rem 2rem', background: 'var(--primary)', color: 'white', borderRadius: '1rem', fontWeight: 'bold', fontSize: '1.125rem', boxShadow: '0 10px 15px -3px rgba(230, 57, 70, 0.3)' }}
+              href="#donate"
+              className="px-8 py-4 bg-primary text-white rounded-2xl font-bold shadow-lg shadow-primary/30 text-lg hover:bg-primary-dark transition-all w-full sm:w-auto text-center"
+              style={{ padding: '1rem 2rem', background: 'var(--primary)', color: 'white', borderRadius: '1rem', fontWeight: 'bold', fontSize: '1.125rem', boxShadow: '0 10px 15px -3px rgba(230, 57, 70, 0.3)', textDecoration: 'none' }}
             >
               {t('hero.cta')}
-            </motion.button>
-            <motion.button
+            </motion.a>
+            <motion.a
               whileHover={{ scale: 1.05 }}
               whileTap={{ scale: 0.95 }}
-              className="px-8 py-4 bg-white text-text rounded-2xl font-bold border-2 border-text/10 text-lg hover:border-text/30 transition-all w-full sm:w-auto"
-              style={{ padding: '1rem 2rem', background: 'white', color: 'var(--text)', borderRadius: '1rem', fontWeight: 'bold', border: '2px solid rgba(29, 53, 87, 0.1)', fontSize: '1.125rem' }}
+              href="#contact"
+              className="px-8 py-4 bg-white text-text rounded-2xl font-bold border-2 border-text/10 text-lg hover:border-text/30 transition-all w-full sm:w-auto text-center"
+              style={{ padding: '1rem 2rem', background: 'white', color: 'var(--text)', borderRadius: '1rem', fontWeight: 'bold', border: '2px solid rgba(29, 53, 87, 0.1)', fontSize: '1.125rem', textDecoration: 'none' }}
             >
               {t('hero.join_volunteer')}
-            </motion.button>
+            </motion.a>
           </div>
         </motion.div>
       </div>

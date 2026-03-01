@@ -30,7 +30,7 @@ const Footer: React.FC = () => {
           <ul className="space-y-4 text-white/60" style={{ listStyle: 'none', display: 'flex', flexDirection: 'column', gap: '1rem' }}>
             <li><a href="#" className="hover:text-primary transition-colors">{t('nav.home')}</a></li>
             <li><a href="#about" className="hover:text-primary transition-colors">{t('nav.about')}</a></li>
-            <li><a href="#activities" className="hover:text-primary transition-colors">{t('nav.activities')}</a></li>
+            <li><a href="#gallery" className="hover:text-primary transition-colors">{t('nav.activities')}</a></li>
             <li><a href="#donate" className="hover:text-primary transition-colors">{t('nav.donation')}</a></li>
           </ul>
         </div>
@@ -58,17 +58,20 @@ const Footer: React.FC = () => {
             </div>
           </div>
 
-          <button 
-            className="w-full py-4 bg-primary text-white rounded-xl font-bold hover:bg-primary-dark transition-all"
+          <a 
+            href="#donate"
+            className="w-full py-4 bg-primary text-white rounded-xl font-bold hover:bg-primary-dark transition-all inline-block text-center"
             style={{ 
               backgroundColor: 'var(--primary)',
               border: 'none',
               cursor: 'pointer',
-              boxShadow: '0 4px 14px 0 rgba(230, 57, 70, 0.39)'
+              boxShadow: '0 4px 14px 0 rgba(230, 57, 70, 0.39)',
+              textDecoration: 'none',
+              display: 'inline-block'
             }}
           >
             {t('footer.donate_button')}
-          </button>
+          </a>
         </div>
       </div>
 
