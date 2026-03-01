@@ -38,8 +38,8 @@ const Contact: React.FC = () => {
     },
     { 
       icon: MapPin, 
-      label: 'כתובת', 
-      value: 'ירושלים, ישראל', 
+      label: t('contact.address'), 
+      value: t('contact.address_value'), 
       color: '#60a5fa',
       link: null
     },
@@ -81,7 +81,7 @@ const Contact: React.FC = () => {
             fontSize: '0.875rem'
           }}>
             <MessageCircle size={16} />
-            <span style={{ textTransform: 'uppercase', letterSpacing: '0.1em' }}>זמינים עבורכם</span>
+            <span style={{ textTransform: 'uppercase', letterSpacing: '0.1em' }}>{t('contact.badge')}</span>
           </div>
           
           <h2 style={{ 
@@ -103,7 +103,7 @@ const Contact: React.FC = () => {
             maxWidth: '700px', 
             marginInline: 'auto' 
           }}>
-            נלווה אתכם בכל זמן, ביעוץ, הכוונה, או סתם אוזן קשבת. הצוות שלנו כאן לכל שאלה ועזרה שתזדקקו לה.
+            {t('contact.description')}
           </p>
 
           <div style={{ 
@@ -190,8 +190,8 @@ const Contact: React.FC = () => {
             gap: isMobile ? '1.5rem' : '3rem'
           }}>
             <div style={{ textAlign: isMobile ? 'center' : 'right' }}>
-              <h3 style={{ fontSize: '1.35rem', fontWeight: 800, marginBottom: '0.5rem', color: 'var(--text)' }}>מחפשים איך להתנדב או לתרום?</h3>
-              <p style={{ color: 'rgba(29, 53, 87, 0.6)', fontWeight: 600, fontSize: '1rem' }}>הצטרפו למשפחת לב חדוה וקחו חלק בעשייה המבורכת שלנו למען החולים והקשישים.</p>
+              <h3 style={{ fontSize: '1.35rem', fontWeight: 800, marginBottom: '0.5rem', color: 'var(--text)' }}>{t('contact.volunteer_title')}</h3>
+              <p style={{ color: 'rgba(29, 53, 87, 0.6)', fontWeight: 600, fontSize: '1rem' }}>{t('contact.volunteer_desc')}</p>
             </div>
             <motion.a
               whileHover={{ scale: 1.05 }}
@@ -211,7 +211,7 @@ const Contact: React.FC = () => {
               }}
             >
               <MessageCircle size={22} fill="currentColor" />
-              <span>דברו איתנו בווצאפ</span>
+              <span>{t('contact.whatsapp_cta')}</span>
             </motion.a>
           </div>
         </motion.div>

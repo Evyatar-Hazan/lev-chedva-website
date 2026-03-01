@@ -104,7 +104,7 @@ const Navbar: React.FC = () => {
             transition: 'all 0.3s ease'
           }}>
             <Globe size={18} />
-            <span style={{ letterSpacing: '0.05em' }}>{i18n.language === 'he' ? 'ENGLISH' : 'עברית'}</span>
+            <span style={{ letterSpacing: '0.05em' }}>{i18n.language === 'he' ? 'English' : 'עברית'}</span>
           </button>
         </div>
       </div>

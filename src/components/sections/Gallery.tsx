@@ -1,4 +1,5 @@
 import React from 'react';
+import { useTranslation } from 'react-i18next';
 import { motion } from 'framer-motion';
 
 const images = [
@@ -11,12 +12,14 @@ const images = [
 ];
 
 const Gallery: React.FC = () => {
+  const { t } = useTranslation();
+
   return (
     <section id="gallery" className="section-padding bg-text/5">
       <div className="container">
         <div className="flex justify-between items-end mb-12" style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'flex-end', marginBottom: '3rem' }}>
           <div>
-            <h2 className="text-4xl font-extrabold text-text mb-2">פעילות בשטח</h2>
+            <h2 className="text-4xl font-extrabold text-text mb-2">{t('gallery.title')}</h2>
             <div className="w-20 h-1 bg-primary rounded-full"></div>
           </div>
         </div>

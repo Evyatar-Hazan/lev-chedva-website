@@ -10,7 +10,7 @@ const Statistics: React.FC = () => {
     { icon: <Users size={32} />, label: t('stats.volunteers'), value: '450+' },
     { icon: <Calendar size={32} />, label: t('stats.visits'), value: '12,000+' },
     { icon: <Hospital size={32} />, label: t('stats.centers'), value: '18' },
-    { icon: <Heart size={32} />, label: t('stats.smiles'), value: 'אינספור' },
+    { icon: <Heart size={32} />, label: t('stats.smiles'), value: t('stats.limitless') },
   ];
 
   const containerVariants = {

@@ -20,7 +20,7 @@ const Hero: React.FC = () => {
         >
           <div className="inline-flex items-center gap-2 px-4 py-2 bg-primary/10 text-primary rounded-full mb-6 font-semibold" style={{ display: 'inline-flex', alignItems: 'center', gap: '0.5rem', padding: '0.5rem 1rem', background: 'rgba(230, 57, 70, 0.1)', color: 'var(--primary)', borderRadius: '9999px', marginBottom: '1.5rem', fontWeight: 600 }}>
             <Heart size={18} fill="currentColor" />
-            <span>הלב שלנו איתכם</span>
+            <span>{t('hero.badge')}</span>
           </div>
 
           <h1 className="text-5xl md:text-7xl font-extrabold mb-6 text-text" style={{ fontSize: 'clamp(2.5rem, 8vw, 4.5rem)', color: 'var(--text)', marginBottom: '1.5rem' }}>
@@ -48,7 +48,7 @@ const Hero: React.FC = () => {
               className="px-8 py-4 bg-white text-text rounded-2xl font-bold border-2 border-text/10 text-lg hover:border-text/30 transition-all"
               style={{ padding: '1rem 2rem', background: 'white', color: 'var(--text)', borderRadius: '1rem', fontWeight: 'bold', border: '2px solid rgba(29, 53, 87, 0.1)', fontSize: '1.125rem' }}
             >
-              הצטרפו להתנדבות
+              {t('hero.join_volunteer')}
             </motion.button>
           </div>
         </motion.div>

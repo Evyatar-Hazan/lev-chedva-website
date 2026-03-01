@@ -4,56 +4,6 @@ import { motion } from 'framer-motion';
 import { Building2, Smartphone, Heart, Package, ExternalLink, MessageCircle } from 'lucide-react';
 
 /* ─── donation options ─── */
-const OPTIONS = [
-  {
-    icon: Building2,
-    title: 'העברה בנקאית',
-    desc: 'העברה ישירה לחשבוננו',
-    gradient: 'linear-gradient(135deg,#3b82f6,#06b6d4)',
-    glow: 'rgba(59,130,246,0.28)',
-    accent: '#3b82f6',
-    lightBg: 'rgba(59,130,246,0.07)',
-    details: [
-      { label: 'בנק', value: 'מזרחי טפחות' },
-      { label: 'סניף', value: '479' },
-      { label: 'חשבון', value: '166555' },
-      { label: 'עבור', value: 'לב חדוה' },
-    ],
-  },
-  {
-    icon: Smartphone,
-    title: 'ביט / PayBox',
-    desc: 'תרומה מהירה וקלה',
-    gradient: 'linear-gradient(135deg,#10b981,#34d399)',
-    glow: 'rgba(16,185,129,0.28)',
-    accent: '#10b981',
-    lightBg: 'rgba(16,185,129,0.07)',
-    phone: '054-5420068',
-    action: 'שלחו הודעה',
-  },
-  {
-    icon: Heart,
-    title: 'נדרים פלוס',
-    desc: 'תרומה דרך פלטפורמת נדרים',
-    gradient: 'linear-gradient(135deg,#8b5cf6,#ec4899)',
-    glow: 'rgba(139,92,246,0.28)',
-    accent: '#8b5cf6',
-    lightBg: 'rgba(139,92,246,0.07)',
-    url: 'https://www.matara.pro/nedarimplus/online/?mosad=7005008',
-    action: 'לתרומה לחצו כאן',
-  },
-  {
-    icon: Package,
-    title: 'תרומת ציוד רפואי',
-    desc: 'צרו קשר עבור תרומת ציוד',
-    gradient: 'linear-gradient(135deg,#f97316,#fbbf24)',
-    glow: 'rgba(249,115,22,0.28)',
-    accent: '#f97316',
-    lightBg: 'rgba(249,115,22,0.07)',
-    phone: '054-5420068',
-    action: 'שלחו הודעה',
-  },
-];
 
 const containerVariants = {
   hidden: {},
@@ -66,6 +16,57 @@ const cardVariants = {
 
 const Donation: React.FC = () => {
   const { t } = useTranslation();
+
+  const OPTIONS = [
+    {
+      icon: Building2,
+      title: t('donation.bank_transfer'),
+      desc: t('donation.bank_desc'),
+      gradient: 'linear-gradient(135deg,#3b82f6,#06b6d4)',
+      glow: 'rgba(59,130,246,0.28)',
+      accent: '#3b82f6',
+      lightBg: 'rgba(59,130,246,0.07)',
+      details: [
+        { label: t('donation.bank_name'), value: t('donation.bank_value') },
+        { label: t('donation.branch'), value: t('donation.branch_value') },
+        { label: t('donation.account'), value: t('donation.account_value') },
+        { label: t('donation.for'), value: t('donation.account_name') },
+      ],
+    },
+    {
+      icon: Smartphone,
+      title: t('donation.bit_paybox'),
+      desc: t('donation.bit_desc'),
+      gradient: 'linear-gradient(135deg,#10b981,#34d399)',
+      glow: 'rgba(16,185,129,0.28)',
+      accent: '#10b981',
+      lightBg: 'rgba(16,185,129,0.07)',
+      phone: t('donation.phone'),
+      action: t('donation.send_message'),
+    },
+    {
+      icon: Heart,
+      title: t('donation.nedarim_plus'),
+      desc: t('donation.nedarim_desc'),
+      gradient: 'linear-gradient(135deg,#8b5cf6,#ec4899)',
+      glow: 'rgba(139,92,246,0.28)',
+      accent: '#8b5cf6',
+      lightBg: 'rgba(139,92,246,0.07)',
+      url: 'https://www.matara.pro/nedarimplus/online/?mosad=7005008',
+      action: t('donation.nedarim_cta'),
+    },
+    {
+      icon: Package,
+      title: t('donation.medical_equipment'),
+      desc: t('donation.medical_desc'),
+      gradient: 'linear-gradient(135deg,#f97316,#fbbf24)',
+      glow: 'rgba(249,115,22,0.28)',
+      accent: '#f97316',
+      lightBg: 'rgba(249,115,22,0.07)',
+      phone: t('donation.phone'),
+      action: t('donation.send_message'),
+    },
+  ];
 
   return (
     <section
@@ -99,7 +100,7 @@ const Donation: React.FC = () => {
             marginBottom:'1.1rem', border:'1px solid rgba(230,57,70,0.18)',
           }}>
             <Heart size={14} fill="currentColor" />
-            <span>כל תרומה עושה הבדל</span>
+            <span>{t('donation.badge')}</span>
           </div>
 
           <h2 style={{
@@ -128,7 +129,7 @@ const Donation: React.FC = () => {
           {OPTIONS.map((opt, i) => {
             const Icon = opt.icon;
             const waLink = opt.phone
-              ? `https://wa.me/972${opt.phone.replace(/-/g,'').replace(/^0/,'')}?text=${encodeURIComponent('שלום, אני רוצה ללמוד על אפשרויות תרומה')}`
+              ? `https://wa.me/972${opt.phone.replace(/-/g,'').replace(/^0/,'')}?text=${encodeURIComponent(t('donation.methods_title'))}`
               : undefined;
 
             return (
@@ -245,7 +246,7 @@ const Donation: React.FC = () => {
                       boxShadow:`0 6px 18px ${opt.glow}`, border:'none', cursor:'pointer',
                     }}
                   >
-                    {opt.action ?? 'בחרו'}
+                    {opt.action ?? t('donation.choose')}
                   </motion.button>
                 )}
               </motion.div>
