@@ -122,10 +122,19 @@ const Donation: React.FC = () => {
           viewport={{ once:false, amount:0.1 }}
           style={{
             display:'grid',
-            gridTemplateColumns:'repeat(auto-fit,minmax(260px,1fr))',
+            gridTemplateColumns: '1fr',
             gap:'1.5rem',
           }}
+          className="grid sm:grid-cols-2 lg:grid-cols-4"
         >
+          <style>{`
+            @media (min-width: 640px) {
+              #donate .grid { grid-template-columns: repeat(2, 1fr) !important; }
+            }
+            @media (min-width: 1024px) {
+              #donate .grid { grid-template-columns: repeat(4, 1fr) !important; }
+            }
+          `}</style>
           {OPTIONS.map((opt, i) => {
             const Icon = opt.icon;
             const waLink = opt.phone
@@ -144,7 +153,7 @@ const Donation: React.FC = () => {
                   borderRadius:'1.75rem',
                   border:'1.5px solid rgba(255,255,255,0.7)',
                   boxShadow:'0 8px 32px rgba(31,38,135,0.09)',
-                  padding:'2.2rem 1.8rem',
+                  padding: '2rem 1.25rem',
                   display:'flex', flexDirection:'column', alignItems:'center', textAlign:'center',
                   transition:'box-shadow 0.3s ease, transform 0.3s ease',
                 }}
@@ -182,13 +191,13 @@ const Donation: React.FC = () => {
                 {opt.details && (
                   <div style={{
                     width:'100%', background:opt.lightBg, borderRadius:'1rem',
-                    padding:'0.9rem 1rem', marginBottom:'1.25rem',
+                    padding:'1rem 0.75rem', marginBottom:'1.25rem',
                     borderRight:`4px solid ${opt.accent}`, textAlign:'right',
                   }}>
                     {opt.details.map((d, idx) => (
-                      <div key={idx} style={{ display:'flex', justifyContent:'space-between', fontSize:'0.84rem', lineHeight:2, color:'rgba(29,53,87,0.72)' }}>
-                        <span style={{ fontWeight:600, color:opt.accent }}>{d.label}</span>
-                        <span style={{ fontWeight:500 }}>{d.value}</span>
+                      <div key={idx} style={{ display:'flex', justifyContent:'space-between', fontSize:'0.75rem', gap: '0.5rem', lineHeight:2.2, color:'rgba(29,53,87,0.72)' }}>
+                        <span style={{ fontWeight:700, color:opt.accent, whiteSpace: 'nowrap' }}>{d.label}</span>
+                        <span style={{ fontWeight:600, wordBreak: 'break-word', textAlign: 'left' }}>{d.value}</span>
                       </div>
                     ))}
                   </div>

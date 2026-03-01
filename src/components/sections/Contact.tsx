@@ -99,9 +99,10 @@ const Contact: React.FC = () => {
             color: 'rgba(29, 53, 87, 0.7)', 
             lineHeight: 1.6, 
             fontWeight: 500, 
-            marginBottom: '4rem', 
+            marginBottom: '3rem', 
             maxWidth: '700px', 
-            marginInline: 'auto' 
+            marginInline: 'auto',
+            textAlign: 'center'
           }}>
             {t('contact.description')}
           </p>

@@ -37,7 +37,7 @@ const About: React.FC = () => {
           <p className="text-lg text-text/80 mb-6" style={{ fontSize: '1.125rem', color: 'rgba(29, 53, 87, 0.8)', marginBottom: '1.5rem' }}>
             {t('about.description')}
           </p>
-          <div className="p-6 bg-primary/5 border-r-4 border-primary rounded-l-2xl" style={{ padding: '1.5rem', background: 'rgba(230, 57, 70, 0.05)', borderRight: '4px solid var(--primary)', borderTopLeftRadius: '1.5rem', borderBottomLeftRadius: '1.5rem' }}>
+          <div className="p-6 bg-primary/5 border-r-4 border-primary rounded-2xl md:rounded-r-none md:rounded-l-2xl" style={{ padding: '1.5rem', background: 'rgba(230, 57, 70, 0.05)', borderRight: '4px solid var(--primary)', borderRadius: '1.5rem' }}>
             <p className="text-lg font-medium italic text-text" style={{ fontSize: '1.125rem', fontWeight: 500, fontStyle: 'italic' }}>
               {t('about.mission')}
             </p>

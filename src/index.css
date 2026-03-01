@@ -45,18 +45,25 @@ body {
 }
 
 .section-padding {
-  padding: 100px 20px;
+  padding: 100px 30px;
 }
 
 @media (max-width: 768px) {
   .section-padding {
-    padding: 60px 15px;
+    padding: 60px 24px;
   }
 }
 
 .container {
   max-width: 1200px;
   margin: 0 auto;
+  padding: 0 1.5rem;
+}
+
+@media (max-width: 640px) {
+  .container {
+    padding: 0 1.25rem;
+  }
 }
 
 h1,

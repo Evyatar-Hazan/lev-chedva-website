@@ -36,9 +36,14 @@ const Statistics: React.FC = () => {
           initial="hidden"
           whileInView="visible"
           viewport={{ once: true, margin: "-100px" }}
-          className="grid grid-cols-2 md:grid-cols-4 gap-8"
-          style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(200px, 1fr))', gap: '2rem' }}
+          className="grid grid-cols-2 md:grid-cols-4 gap-4 md:gap-8"
+          style={{ display: 'grid', gridTemplateColumns: 'repeat(2, 1fr)', gap: '1rem' }}
         >
+          <style>{`
+            @media (min-width: 768px) {
+              #stats .grid { grid-template-columns: repeat(4, 1fr) !important; gap: 2rem !important; }
+            }
+          `}</style>
           {stats.map((stat, index) => (
             <motion.div
               key={index}

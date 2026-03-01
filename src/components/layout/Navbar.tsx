@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { useTranslation } from 'react-i18next';
-import { Globe } from 'lucide-react';
+import { Globe, Menu, X } from 'lucide-react';
+import { motion, AnimatePresence } from 'framer-motion';
 import { clsx, type ClassValue } from 'clsx';
 import { twMerge } from 'tailwind-merge';
 
@@ -13,6 +14,7 @@ import logo from '../../assets/logoLevChedva.png';
 const Navbar: React.FC = () => {
   const { t, i18n } = useTranslation();
   const [isScrolled, setIsScrolled] = useState(false);
+  const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
 
   useEffect(() => {
     const handleScroll = () => {
@@ -63,14 +65,6 @@ const Navbar: React.FC = () => {
       }}>
         <div style={{ display: 'flex', alignItems: 'center', gap: '1rem' }}>
           <img src={logo} alt="Lev Chedva Logo" style={{ height: '55px', width: 'auto', filter: 'drop-shadow(0 2px 4px rgba(0,0,0,0.05))' }} />
-          <div className="text-3xl font-black text-primary" style={{ 
-            fontSize: '1.75rem', 
-            fontWeight: 900, 
-            color: 'var(--primary)',
-            letterSpacing: '-0.03em',
-            lineHeight: 1
-          }}>
-          </div>
         </div>
 
         {/* Desktop Links */}
@@ -107,12 +101,86 @@ const Navbar: React.FC = () => {
             <span style={{ letterSpacing: '0.05em' }}>{i18n.language === 'he' ? 'English' : 'עברית'}</span>
           </button>
         </div>
+
+        {/* Mobile Toggle */}
+        <button 
+          className="md:hidden flex items-center justify-center p-2 text-text"
+          onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
+          style={{ border: 'none', background: 'none', cursor: 'pointer' }}
+        >
+          {isMobileMenuOpen ? <X size={28} /> : <Menu size={28} />}
+        </button>
       </div>
 
-      {/* Styled manually since I'm not using full Tailwind yet, just helpers */}
+      {/* Mobile Menu */}
+      <AnimatePresence>
+        {isMobileMenuOpen && (
+          <motion.div
+            initial={{ opacity: 0, height: 0 }}
+            animate={{ opacity: 1, height: 'auto' }}
+            exit={{ opacity: 0, height: 0 }}
+            className="md:hidden bg-white border-t border-gray-100 overflow-hidden"
+            style={{ 
+              backgroundColor: 'white', 
+              borderTop: '1px solid rgba(0,0,0,0.05)',
+              position: 'absolute',
+              top: '100%',
+              left: 0,
+              right: 0,
+              boxShadow: '0 10px 15px -3px rgba(0,0,0,0.1)'
+            }}
+          >
+            <div className="flex flex-col p-6 gap-4" style={{ display: 'flex', flexDirection: 'column', padding: '1.5rem', gap: '1rem' }}>
+              {navLinks.map((link) => (
+                <a 
+                  key={link.name} 
+                  href={link.href} 
+                  onClick={() => setIsMobileMenuOpen(false)}
+                  style={{
+                    color: 'var(--text)',
+                    fontSize: '1.1rem',
+                    fontWeight: 700,
+                    padding: '0.75rem 0',
+                    borderBottom: '1px solid rgba(0,0,0,0.03)'
+                  }}
+                >
+                  {link.name}
+                </a>
+              ))}
+              <button 
+                onClick={() => {
+                  toggleLanguage();
+                  setIsMobileMenuOpen(false);
+                }} 
+                style={{
+                  display: 'flex',
+                  alignItems: 'center',
+                  gap: '0.5rem',
+                  padding: '1rem',
+                  borderRadius: '0.75rem',
+                  backgroundColor: 'var(--primary)',
+                  color: 'white',
+                  fontWeight: 800,
+                  fontSize: '1rem',
+                  border: 'none',
+                  cursor: 'pointer',
+                  marginTop: '0.5rem',
+                  justifyContent: 'center'
+                }}
+              >
+                <Globe size={20} />
+                <span>{i18n.language === 'he' ? 'English' : 'עברית'}</span>
+              </button>
+            </div>
+          </motion.div>
+        )}
+      </AnimatePresence>
+
       <style>{`
         @media (max-width: 768px) {
           .hidden { display: none !important; }
+          .md\\:flex { display: none !important; }
+          .md\\:hidden { display: flex !important; }
         }
         @media (min-width: 769px) {
           .md\\:flex { display: flex !important; }

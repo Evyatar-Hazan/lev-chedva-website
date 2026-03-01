@@ -47,12 +47,28 @@ const Footer: React.FC = () => {
         <div>
           <h4 className="text-lg font-bold mb-6">{t('footer.donation_title')}</h4>
           <p className="text-white/60 mb-6" style={{ color: 'rgba(255, 255, 255, 0.6)', marginBottom: '1.5rem' }}>{t('footer.donation_desc')}</p>
-          <button className="w-full py-4 bg-primary text-white rounded-xl font-bold hover:bg-primary-dark transition-all">{t('footer.donate_button')}</button>
+          <button 
+            className="w-full py-4 bg-primary text-white rounded-xl font-bold hover:bg-primary-dark transition-all"
+            style={{ 
+              backgroundColor: 'var(--primary)',
+              border: 'none',
+              cursor: 'pointer',
+              boxShadow: '0 4px 14px 0 rgba(230, 57, 70, 0.39)'
+            }}
+          >
+            {t('footer.donate_button')}
+          </button>
         </div>
       </div>
 
       <div className="container mt-16 pt-8 border-t border-white/10 text-center text-white/40 text-sm" style={{ marginTop: '4rem', paddingTop: '2rem', borderTop: '1px solid rgba(255, 255, 255, 0.1)', textAlign: 'center', color: 'rgba(255, 255, 255, 0.4)', fontSize: '0.875rem' }}>
-        <p>© {new Date().getFullYear()} {t('footer.rights')} {t('footer.built_with')} <Heart size={12} className="inline text-primary" fill="currentColor" style={{ display: 'inline', color: 'var(--primary)' }} /> {t('footer.by')} <a href="https://evyatarhazan.com" target="_blank" rel="noopener noreferrer" style={{ color: 'var(--primary)', textDecoration: 'none' }} className="hover:underline">Evyatar Hazan</a> </p>
+        <p className="flex flex-wrap justify-center items-center gap-1">
+          <span>© {new Date().getFullYear()} {t('footer.rights')}</span>
+          <span className="flex items-center gap-1">
+            {t('footer.built_with')} <Heart size={12} className="text-primary" fill="currentColor" style={{ color: 'var(--primary)' }} /> {t('footer.by')}
+          </span>
+          <a href="https://evyatarhazan.com" target="_blank" rel="noopener noreferrer" style={{ color: 'var(--primary)', textDecoration: 'none' }} className="hover:underline">Evyatar Hazan</a>
+        </p>
       </div>
     </footer>
   );

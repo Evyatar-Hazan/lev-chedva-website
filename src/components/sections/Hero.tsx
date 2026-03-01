@@ -12,7 +12,7 @@ const Hero: React.FC = () => {
       <div className="absolute top-[-20%] right-[-10%] w-[50vw] h-[50vw] bg-primary/5 rounded-full blur-[120px] -z-10" style={{ position: 'absolute', top: '-20%', right: '-10%', width: '50vw', height: '50vw', background: 'rgba(230, 57, 70, 0.05)', borderRadius: '50%', filter: 'blur(120px)', zIndex: -10 }}></div>
       <div className="absolute bottom-[-20%] left-[-10%] w-[40vw] h-[40vw] bg-secondary/5 rounded-full blur-[120px] -z-10" style={{ position: 'absolute', bottom: '-20%', left: '-10%', width: '40vw', height: '40vw', background: 'rgba(69, 123, 157, 0.05)', borderRadius: '50%', filter: 'blur(120px)', zIndex: -10 }}></div>
 
-      <div className="container px-6 flex flex-col items-center text-center">
+      <div className="container flex flex-col items-center text-center">
         <motion.div
           initial={{ opacity: 0, y: 40 }}
           animate={{ opacity: 1, y: 0 }}
@@ -33,11 +33,11 @@ const Hero: React.FC = () => {
             {t('hero.subtitle')}
           </p>
 
-          <div className="flex flex-wrap justify-center gap-4" style={{ display: 'flex', flexWrap: 'wrap', justifyContent: 'center', gap: '1rem' }}>
+          <div className="flex flex-col sm:flex-row justify-center gap-4" style={{ display: 'flex', flexDirection: 'column', flexWrap: 'wrap', justifyContent: 'center', gap: '1rem' }}>
             <motion.button
               whileHover={{ scale: 1.05 }}
               whileTap={{ scale: 0.95 }}
-              className="px-8 py-4 bg-primary text-white rounded-2xl font-bold shadow-lg shadow-primary/30 text-lg hover:bg-primary-dark transition-all"
+              className="px-8 py-4 bg-primary text-white rounded-2xl font-bold shadow-lg shadow-primary/30 text-lg hover:bg-primary-dark transition-all w-full sm:w-auto"
               style={{ padding: '1rem 2rem', background: 'var(--primary)', color: 'white', borderRadius: '1rem', fontWeight: 'bold', fontSize: '1.125rem', boxShadow: '0 10px 15px -3px rgba(230, 57, 70, 0.3)' }}
             >
               {t('hero.cta')}
@@ -45,7 +45,7 @@ const Hero: React.FC = () => {
             <motion.button
               whileHover={{ scale: 1.05 }}
               whileTap={{ scale: 0.95 }}
-              className="px-8 py-4 bg-white text-text rounded-2xl font-bold border-2 border-text/10 text-lg hover:border-text/30 transition-all"
+              className="px-8 py-4 bg-white text-text rounded-2xl font-bold border-2 border-text/10 text-lg hover:border-text/30 transition-all w-full sm:w-auto"
               style={{ padding: '1rem 2rem', background: 'white', color: 'var(--text)', borderRadius: '1rem', fontWeight: 'bold', border: '2px solid rgba(29, 53, 87, 0.1)', fontSize: '1.125rem' }}
             >
               {t('hero.join_volunteer')}
