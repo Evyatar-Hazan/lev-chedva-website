@@ -47,6 +47,17 @@ const Footer: React.FC = () => {
         <div>
           <h4 className="text-lg font-bold mb-6">{t('footer.donation_title')}</h4>
           <p className="text-white/60 mb-6" style={{ color: 'rgba(255, 255, 255, 0.6)', marginBottom: '1.5rem' }}>{t('footer.donation_desc')}</p>
+          
+          <div className="mb-6 flex justify-center md:justify-start" style={{ marginBottom: '1.5rem', display: 'flex', justifyContent: 'center' }}>
+            <div className="p-2 bg-white rounded-lg shadow-sm" style={{ padding: '0.5rem', backgroundColor: 'white', borderRadius: '0.5rem' }}>
+              <img 
+                src="/images/qrcode_www.matara.pro.png" 
+                alt="Donation QR Code" 
+                style={{ width: '120px', height: '120px', display: 'block' }}
+              />
+            </div>
+          </div>
+
           <button 
             className="w-full py-4 bg-primary text-white rounded-xl font-bold hover:bg-primary-dark transition-all"
             style={{ 
