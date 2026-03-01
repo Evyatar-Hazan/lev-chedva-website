@@ -15,7 +15,8 @@ const Hero: React.FC = () => {
       <div className="container flex flex-col items-center text-center">
         <motion.div
           initial={{ opacity: 0, y: 40 }}
-          animate={{ opacity: 1, y: 0 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: false }}
           transition={{ duration: 0.8 }}
         >
           <div className="inline-flex items-center gap-2 px-4 py-2 bg-primary/10 text-primary rounded-full mb-6 font-semibold" style={{ display: 'inline-flex', alignItems: 'center', gap: '0.5rem', padding: '0.5rem 1rem', background: 'rgba(230, 57, 70, 0.1)', color: 'var(--primary)', borderRadius: '9999px', marginBottom: '1.5rem', fontWeight: 600 }}>

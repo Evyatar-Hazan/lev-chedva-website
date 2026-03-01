@@ -12,7 +12,7 @@ const About: React.FC = () => {
           initial={{ opacity: 0, x: -50 }}
           whileInView={{ opacity: 1, x: 0 }}
           transition={{ duration: 0.8 }}
-          viewport={{ once: true }}
+          viewport={{ once: false }}
           className="relative"
         >
           <div className="aspect-square bg-primary/10 rounded-3xl overflow-hidden shadow-2xl" style={{ aspectRatio: '1/1', background: 'rgba(230, 57, 70, 0.1)', borderRadius: '1.5rem', overflow: 'hidden', boxShadow: '0 25px 50px -12px rgba(0, 0, 0, 0.25)' }}>
@@ -29,7 +29,7 @@ const About: React.FC = () => {
           initial={{ opacity: 0, x: 50 }}
           whileInView={{ opacity: 1, x: 0 }}
           transition={{ duration: 0.8 }}
-          viewport={{ once: true }}
+          viewport={{ once: false }}
         >
           <h2 className="text-4xl font-extrabold mb-8 text-text" style={{ fontSize: '2.25rem', marginBottom: '2rem' }}>
             {t('about.title')}

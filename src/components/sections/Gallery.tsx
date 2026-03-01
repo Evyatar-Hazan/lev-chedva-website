@@ -32,7 +32,7 @@ const Gallery: React.FC = () => {
               whileInView={{ opacity: 1, scale: 1 }}
               whileHover={{ scale: 1.02 }}
               transition={{ delay: i * 0.1 }}
-              viewport={{ once: true }}
+              viewport={{ once: false }}
               className="aspect-square rounded-2xl overflow-hidden shadow-lg"
               style={{ aspectRatio: '1/1', borderRadius: '1rem', overflow: 'hidden', boxShadow: '0 10px 15px -3px rgba(0, 0, 0, 0.1)' }}
             >
