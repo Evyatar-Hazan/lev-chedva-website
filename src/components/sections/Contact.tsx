@@ -1,72 +1,220 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 import { useTranslation } from 'react-i18next';
-import { Mail, Phone, MapPin, Send } from 'lucide-react';
+import { motion } from 'framer-motion';
+import { Mail, Phone, MapPin, MessageCircle } from 'lucide-react';
 
 const Contact: React.FC = () => {
   const { t } = useTranslation();
+  const [isMobile, setIsMobile] = useState(false);
+
+  useEffect(() => {
+    const checkMobile = () => setIsMobile(window.innerWidth < 1024);
+    checkMobile();
+    window.addEventListener('resize', checkMobile);
+    return () => window.removeEventListener('resize', checkMobile);
+  }, []);
+
+  const contactItems = [
+    { 
+      icon: Phone, 
+      label: t('contact.phone'), 
+      value: '054-5420068', 
+      color: 'var(--primary)',
+      link: 'tel:0545420068'
+    },
+    { 
+      icon: MessageCircle, 
+      label: t('contact.whatsapp'), 
+      value: '054-5420068', 
+      color: '#10b981',
+      link: 'https://wa.me/972545420068'
+    },
+    { 
+      icon: Mail, 
+      label: t('contact.email'), 
+      value: 'office@lev-chedva.org', 
+      color: 'var(--secondary)',
+      link: 'mailto:office@lev-chedva.org'
+    },
+    { 
+      icon: MapPin, 
+      label: 'כתובת', 
+      value: 'ירושלים, ישראל', 
+      color: '#60a5fa',
+      link: null
+    },
+  ];
 
   return (
-    <section id="contact" className="section-padding">
-      <div className="container">
-        <div className="glass-card p-8 md:p-16 grid md:grid-cols-2 gap-16" style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(300px, 1fr))', gap: '4rem', padding: '4rem' }}>
-          <div>
-            <h2 className="text-4xl font-extrabold mb-8 text-text">{t('contact.title')}</h2>
-            <div className="space-y-8" style={{ display: 'flex', flexDirection: 'column', gap: '2rem' }}>
-              <div className="flex items-center gap-4" style={{ display: 'flex', alignItems: 'center', gap: '1rem' }}>
-                <div className="w-12 h-12 rounded-xl bg-primary/10 text-primary flex items-center justify-center">
-                  <Phone size={24} />
-                </div>
-                <div>
-                  <div className="text-sm text-text/50 font-bold uppercase tracking-wider">טלפון</div>
-                  <div className="text-xl font-bold">054-5420068</div>
-                </div>
-              </div>
-              <div className="flex items-center gap-4" style={{ display: 'flex', alignItems: 'center', gap: '1rem' }}>
-                <div className="w-12 h-12 rounded-xl bg-secondary/10 text-secondary flex items-center justify-center">
-                  <Mail size={24} />
-                </div>
-                <div>
-                  <div className="text-sm text-text/50 font-bold uppercase tracking-wider">אימייל</div>
-                  <div className="text-xl font-bold">office@lev-chedva.org</div>
-                </div>
-              </div>
-              <div className="flex items-center gap-4" style={{ display: 'flex', alignItems: 'center', gap: '1rem' }}>
-                <div className="w-12 h-12 rounded-xl bg-text/10 text-text flex items-center justify-center">
-                  <MapPin size={24} />
-                </div>
-                <div>
-                  <div className="text-sm text-text/50 font-bold uppercase tracking-wider">כתובת</div>
-                  <div className="text-xl font-bold">ירושלים, ישראל</div>
-                </div>
-              </div>
-            </div>
+    <section id="contact" className="section-padding" style={{ position: 'relative', overflow: 'hidden', width: '100%' }}>
+      {/* Background Decorative Elements */}
+      <div style={{ position: 'absolute', top: '10%', left: '-5%', width: '30vw', height: '30vw', background: 'rgba(230, 57, 70, 0.05)', borderRadius: '50%', filter: 'blur(100px)', zIndex: -1 }}></div>
+      <div style={{ position: 'absolute', bottom: '-10%', right: '-5%', width: '25vw', height: '25vw', background: 'rgba(69, 123, 157, 0.05)', borderRadius: '50%', filter: 'blur(100px)', zIndex: -1 }}></div>
+
+      <div className="container" style={{ position: 'relative', zIndex: 10 }}>
+        <motion.div
+          initial={{ opacity: 0, y: 30 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.8 }}
+          viewport={{ once: true }}
+          className="glass-card"
+          style={{ 
+            padding: isMobile ? '2.5rem 1.5rem' : '4rem', 
+            borderRadius: '2.5rem', 
+            border: '1px solid rgba(230, 57, 70, 0.1)',
+            textAlign: 'center',
+            background: 'rgba(255, 255, 255, 0.7)',
+            backdropFilter: 'blur(20px)',
+            boxShadow: '0 25px 50px -12px rgba(0, 0, 0, 0.1)'
+          }}
+        >
+          <div style={{ 
+            display: 'inline-flex', 
+            alignItems: 'center', 
+            gap: '0.5rem', 
+            marginBottom: '1.5rem', 
+            padding: '0.4rem 1.25rem', 
+            background: 'rgba(230, 57, 70, 0.1)', 
+            color: 'var(--primary)', 
+            borderRadius: '9999px',
+            fontWeight: 'bold',
+            fontSize: '0.875rem'
+          }}>
+            <MessageCircle size={16} />
+            <span style={{ textTransform: 'uppercase', letterSpacing: '0.1em' }}>זמינים עבורכם</span>
+          </div>
+          
+          <h2 style={{ 
+            fontSize: 'clamp(2.5rem, 5vw, 3.5rem)', 
+            fontWeight: 900, 
+            marginBottom: '1.5rem', 
+            color: 'var(--text)', 
+            lineHeight: 1.1 
+          }}>
+            {t('contact.title')}
+          </h2>
+          
+          <p style={{ 
+            fontSize: '1.25rem', 
+            color: 'rgba(29, 53, 87, 0.7)', 
+            lineHeight: 1.6, 
+            fontWeight: 500, 
+            marginBottom: '4rem', 
+            maxWidth: '700px', 
+            marginInline: 'auto' 
+          }}>
+            נלווה אתכם בכל זמן, ביעוץ, הכוונה, או סתם אוזן קשבת. הצוות שלנו כאן לכל שאלה ועזרה שתזדקקו לה.
+          </p>
+
+          <div style={{ 
+            display: 'grid', 
+            gridTemplateColumns: isMobile ? '1fr' : 'repeat(4, 1fr)', 
+            gap: isMobile ? '2rem' : '1.5rem',
+            alignItems: 'start',
+            marginBottom: '4rem'
+          }}>
+            {contactItems.map((item, index) => {
+              const Icon = item.icon;
+              return (
+                <motion.div
+                  key={index}
+                  initial={{ opacity: 0, y: 20 }}
+                  whileInView={{ opacity: 1, y: 0 }}
+                  transition={{ duration: 0.5, delay: index * 0.1 }}
+                  viewport={{ once: true }}
+                  whileHover={item.link ? { y: -8, scale: 1.02 } : {}}
+                  style={{ display: 'flex', flexDirection: 'column', alignItems: 'center' }}
+                >
+                  <a 
+                    href={item.link || '#'} 
+                    onClick={(e) => !item.link && e.preventDefault()}
+                    target={item.link?.startsWith('http') ? '_blank' : undefined} 
+                    rel={item.link?.startsWith('http') ? 'noopener noreferrer' : undefined}
+                    style={{ 
+                      display: 'flex', 
+                      flexDirection: 'column', 
+                      alignItems: 'center',
+                      textDecoration: 'none',
+                      color: 'inherit',
+                      width: '100%',
+                      cursor: item.link ? 'pointer' : 'default'
+                    }}
+                  >
+                    <div style={{ 
+                      width: '80px',
+                      height: '80px',
+                      borderRadius: '1.5rem', 
+                      background: 'white', 
+                      boxShadow: '0 10px 25px rgba(0, 0, 0, 0.05)', 
+                      display: 'flex',
+                      alignItems: 'center',
+                      justifyContent: 'center',
+                      marginBottom: '1.25rem',
+                      color: item.color,
+                      border: '1px solid rgba(0,0,0,0.03)',
+                      transition: 'all 0.3s ease'
+                    }}>
+                      <Icon size={38} strokeWidth={2} />
+                    </div>
+                    <div style={{ 
+                      fontSize: '0.875rem', 
+                      color: 'rgba(29, 53, 87, 0.4)', 
+                      fontWeight: '800', 
+                      textTransform: 'uppercase', 
+                      letterSpacing: '0.15em', 
+                      marginBottom: '0.5rem' 
+                    }}>
+                      {item.label}
+                    </div>
+                    <div style={{ 
+                      fontSize: '1.125rem', 
+                      fontWeight: '800', 
+                      color: 'var(--text)', 
+                      direction: 'ltr' 
+                    }}>
+                      {item.value}
+                    </div>
+                  </a>
+                </motion.div>
+              );
+            })}
           </div>
 
-          <form className="space-y-6" style={{ display: 'flex', flexDirection: 'column', gap: '1.5rem' }}>
-            <div className="grid grid-cols-2 gap-4" style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '1rem' }}>
-              <div className="flex flex-col gap-2">
-                <label className="font-bold text-sm">{t('contact.name')}</label>
-                <input type="text" className="p-4 rounded-xl border-2 border-text/5 bg-bg/50 focus:border-primary outline-none transition-all" />
-              </div>
-              <div className="flex flex-col gap-2">
-                <label className="font-bold text-sm">{t('contact.phone')}</label>
-                <input type="tel" className="p-4 rounded-xl border-2 border-text/5 bg-bg/50 focus:border-primary outline-none transition-all" />
-              </div>
+          <div style={{ 
+            paddingTop: '3rem', 
+            borderTop: '1px solid rgba(0,0,0,0.05)',
+            display: 'flex',
+            flexDirection: isMobile ? 'column' : 'row',
+            alignItems: 'center',
+            justifyContent: 'center',
+            gap: isMobile ? '1.5rem' : '3rem'
+          }}>
+            <div style={{ textAlign: isMobile ? 'center' : 'right' }}>
+              <h3 style={{ fontSize: '1.35rem', fontWeight: 800, marginBottom: '0.5rem', color: 'var(--text)' }}>מחפשים איך להתנדב או לתרום?</h3>
+              <p style={{ color: 'rgba(29, 53, 87, 0.6)', fontWeight: 600, fontSize: '1rem' }}>הצטרפו למשפחת לב חדוה וקחו חלק בעשייה המבורכת שלנו למען החולים והקשישים.</p>
             </div>
-            <div className="flex flex-col gap-2">
-              <label className="font-bold text-sm">{t('contact.email')}</label>
-              <input type="email" className="p-4 rounded-xl border-2 border-text/5 bg-bg/50 focus:border-primary outline-none transition-all" />
-            </div>
-            <div className="flex flex-col gap-2">
-              <label className="font-bold text-sm">{t('contact.message')}</label>
-              <textarea rows={4} className="p-4 rounded-xl border-2 border-text/5 bg-bg/50 focus:border-primary outline-none transition-all"></textarea>
-            </div>
-            <button className="w-full py-4 bg-primary text-white rounded-xl font-bold flex items-center justify-center gap-3 hover:bg-primary-dark transition-all shadow-lg shadow-primary/20">
-              <Send size={20} />
-              {t('contact.send')}
-            </button>
-          </form>
-        </div>
+            <motion.a
+              whileHover={{ scale: 1.05 }}
+              whileTap={{ scale: 0.95 }}
+              href="https://wa.me/972545420068"
+              style={{ 
+                display: 'inline-flex', 
+                alignItems: 'center', 
+                gap: '0.75rem', 
+                padding: '1.1rem 2.5rem', 
+                background: 'var(--primary)', 
+                color: 'white', 
+                borderRadius: '1.25rem', 
+                fontWeight: '900',
+                boxShadow: '0 15px 30px -5px rgba(230, 57, 70, 0.4)',
+                fontSize: '1.1rem'
+              }}
+            >
+              <MessageCircle size={22} fill="currentColor" />
+              <span>דברו איתנו בווצאפ</span>
+            </motion.a>
+          </div>
+        </motion.div>
       </div>
     </section>
   );

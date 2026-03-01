@@ -36,6 +36,7 @@
     "email": "Email",
     "phone": "Phone",
     "message": "Message",
+    "whatsapp": "WhatsApp",
     "send": "Send Message"
   }
 }
